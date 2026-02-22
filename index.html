@@ -25,36 +25,38 @@
     </div>
 
     <main class="page-shell" id="top">
-      <section class="profile-card" aria-labelledby="profile-name">
-        <img
-          id="profile-avatar"
-          class="profile-avatar"
-          src="assets/avatar.jpg"
-          alt="Profile avatar"
-          width="96"
-          height="96"
-          loading="eager"
-          decoding="async"
-          onerror="this.style.display='none'"
-        />
-        <h1 id="profile-name">Your Name</h1>
-        <p id="profile-tagline">Creator | Founder | Personal Brand</p>
-      </section>
+      <div class="left-column">
+        <section class="profile-card" aria-labelledby="profile-name">
+          <img
+            id="profile-avatar"
+            class="profile-avatar"
+            src="assets/avatar.jpg"
+            alt="Profile avatar"
+            width="96"
+            height="96"
+            loading="eager"
+            decoding="async"
+            onerror="this.style.display='none'"
+          />
+          <h1 id="profile-name">Your Name</h1>
+          <p id="profile-tagline">Creator | Founder | Personal Brand</p>
+        </section>
+
+        <section class="contact-panel" aria-label="Contact options">
+          <button
+            id="contact-trigger"
+            class="contact-trigger"
+            type="button"
+            aria-haspopup="dialog"
+            aria-controls="contact-modal"
+          >
+            Contact me
+          </button>
+        </section>
+      </div>
 
       <section class="links-panel" aria-label="Primary links">
         <div id="social-links" class="links-list"></div>
-      </section>
-
-      <section class="contact-panel" aria-label="Contact options">
-        <button
-          id="contact-trigger"
-          class="contact-trigger"
-          type="button"
-          aria-haspopup="dialog"
-          aria-controls="contact-modal"
-        >
-          Contact me
-        </button>
       </section>
     </main>
 
