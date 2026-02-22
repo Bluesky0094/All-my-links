@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A personal links landing page for social profiles and direct contact options."
+    />
+    <title>All My Links</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Sora:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-layer" aria-hidden="true">
+      <div class="orb orb-a"></div>
+      <div class="orb orb-b"></div>
+      <div class="grid-mask"></div>
+    </div>
+
+    <main class="page-shell" id="top">
+      <section class="profile-card" aria-labelledby="profile-name">
+        <img
+          id="profile-avatar"
+          class="profile-avatar"
+          src="assets/avatar.jpg"
+          alt="Profile avatar"
+          width="96"
+          height="96"
+          loading="eager"
+          decoding="async"
+          onerror="this.style.display='none'"
+        />
+        <h1 id="profile-name">Your Name</h1>
+        <p id="profile-tagline">Creator | Founder | Personal Brand</p>
+      </section>
+
+      <section class="links-panel" aria-label="Primary links">
+        <div id="social-links" class="links-list"></div>
+      </section>
+
+      <section class="contact-panel" aria-label="Contact options">
+        <button
+          id="contact-trigger"
+          class="contact-trigger"
+          type="button"
+          aria-haspopup="dialog"
+          aria-controls="contact-modal"
+        >
+          Contact me
+        </button>
+      </section>
+    </main>
+
+    <div
+      id="modal-overlay"
+      class="modal-overlay"
+      hidden
+      role="presentation"
+    >
+      <section
+        id="contact-modal"
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="contact-title"
+        tabindex="-1"
+      >
+        <header class="modal-header">
+          <h2 id="contact-title">Choose contact method</h2>
+          <button
+            id="modal-close"
+            class="icon-close"
+            type="button"
+            aria-label="Close contact options"
+          >
+            <span aria-hidden="true">×</span>
+          </button>
+        </header>
+        <div id="contact-links" class="contact-links"></div>
+      </section>
+    </div>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
