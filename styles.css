@@ -221,6 +221,10 @@ h1 {
   background: rgba(3, 9, 18, 0.73);
 }
 
+.modal-overlay[hidden] {
+  display: none;
+}
+
 .modal {
   width: min(100%, 28rem);
   border-radius: var(--radius-lg);
@@ -270,5 +274,27 @@ h1 {
   .links-panel,
   .contact-panel {
     border-radius: 22px;
+  }
+}
+
+@media (min-width: 980px) {
+  .page-shell {
+    width: min(100% - 4rem, 64rem);
+    display: grid;
+    grid-template-columns: minmax(16rem, 22rem) minmax(22rem, 1fr);
+    gap: var(--space-4);
+    align-items: start;
+  }
+
+  .profile-card {
+    margin: 0;
+  }
+
+  .links-panel {
+    min-height: 100%;
+  }
+
+  .contact-panel {
+    margin: 0;
   }
 }

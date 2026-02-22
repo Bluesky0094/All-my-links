@@ -6,23 +6,23 @@ const profileConfig = {
 
 const socialLinks = [
   {
-    label: "Instagram",
+    label: "Montaggio video",
     url: "https://instagram.com/yourhandle",
     icon: "📸",
     highlight: true,
   },
   {
-    label: "TikTok",
+    label: "Grafica",
     url: "https://tiktok.com/@yourhandle",
     icon: "🎵",
   },
   {
-    label: "YouTube",
+    label: "Siti web",
     url: "https://youtube.com/@yourchannel",
     icon: "▶️",
   },
   {
-    label: "Portfolio",
+    label: "Sicurezza online",
     url: "https://yourportfolio.com",
     icon: "🌐",
   },
