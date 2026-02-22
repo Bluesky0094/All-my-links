@@ -182,6 +182,12 @@ h1 {
   background: linear-gradient(145deg, rgba(13, 63, 85, 0.95), rgba(12, 31, 58, 0.95));
 }
 
+.link-card.disabled {
+  opacity: 0.72;
+  cursor: not-allowed;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
 .contact-panel {
   margin-top: var(--space-4);
   padding: var(--space-4);
@@ -201,6 +207,12 @@ h1 {
   transform: translateY(-2px);
   border-color: rgba(255, 255, 255, 0.65);
   box-shadow: 0 9px 18px rgba(0, 0, 0, 0.2);
+}
+
+.link-card.disabled:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .link-card:focus-visible,

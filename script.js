@@ -1,34 +1,35 @@
 const profileConfig = {
-  name: "Your Name",
+  name: "Stefano Caccamo",
   tagline: "Creator | Founder | Personal Brand",
   avatarSrc: "assets/avatar.jpg",
 };
 
 const socialLinks = [
   {
-    label: "Montaggio video",
-    url: "https://instagram.com/yourhandle",
+    label: "Montaggio Video",
+    url: "https://creativecuts.work",
     icon: "📸",
     highlight: true,
   },
   {
     label: "Grafica",
-    url: "https://tiktok.com/@yourhandle",
+    url: "",
     icon: "🎵",
+    disabled: true,
   },
   {
-    label: "Siti web",
-    url: "https://youtube.com/@yourchannel",
+    label: "Siti web - Assistenza tecnologica",
+    url: "https://bluesky0094.github.io/Assistenza-tecnologica/",
     icon: "▶️",
   },
   {
-    label: "Sicurezza online",
-    url: "https://yourportfolio.com",
+    label: "Siti web - Portfolio",
+    url: "https://bluesky0094.github.io/Portfolio/",
     icon: "🌐",
   },
   {
     label: "GitHub",
-    url: "https://github.com/yourhandle",
+    url: "https://github.com/Bluesky0094",
     icon: "💻",
   },
 ];
@@ -92,6 +93,20 @@ function applyProfile(config) {
 }
 
 function createLinkCard(item) {
+  if (item.disabled || !item.url) {
+    const placeholder = document.createElement("div");
+    placeholder.className = `link-card disabled${item.highlight ? " highlight" : ""}`;
+    placeholder.setAttribute("aria-disabled", "true");
+    placeholder.innerHTML = `
+      <span class="left">
+        <span class="emoji" aria-hidden="true">${item.icon}</span>
+        <span>${item.label}</span>
+      </span>
+      <span class="arrow" aria-hidden="true">•</span>
+    `;
+    return placeholder;
+  }
+
   const card = document.createElement("a");
   card.className = `link-card${item.highlight ? " highlight" : ""}`;
   card.href = item.url;
