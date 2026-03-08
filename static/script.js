@@ -1,7 +1,7 @@
 const profileConfig = {
   name: "Stefano Caccamo",
   tagline: "Creator | Founder | Personal Brand",
-  avatarSrc: "assets/avatar-ai.svg",
+  avatarSrc: "static/assets/avatar-ai.svg",
 };
 
 const socialLinks = [
