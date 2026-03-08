@@ -71,6 +71,7 @@ const socialLinksRoot = document.getElementById("social-links");
 const contactLinksRoot = document.getElementById("contact-links");
 const modalOverlay = document.getElementById("modal-overlay");
 const contactModal = document.getElementById("contact-modal");
+const contactPanel = document.querySelector(".contact-panel");
 const contactTrigger = document.getElementById("contact-trigger");
 const modalClose = document.getElementById("modal-close");
 
@@ -85,11 +86,58 @@ const focusableSelector = [
 
 let lastFocusedElement = null;
 
+function appendCardContent(container, icon, label, arrow) {
+  const left = document.createElement("span");
+  left.className = "left";
+
+  const iconNode = document.createElement("span");
+  iconNode.className = "emoji";
+  iconNode.setAttribute("aria-hidden", "true");
+  iconNode.textContent = icon;
+
+  const labelNode = document.createElement("span");
+  labelNode.textContent = label;
+
+  left.append(iconNode, labelNode);
+
+  const arrowNode = document.createElement("span");
+  arrowNode.className = "arrow";
+  arrowNode.setAttribute("aria-hidden", "true");
+  arrowNode.textContent = arrow;
+
+  container.append(left, arrowNode);
+}
+
+function isPlaceholderContactUrl(url) {
+  return [
+    "tel:+10000000000",
+    "https://wa.me/10000000000",
+    "mailto:you@example.com",
+    "https://instagram.com/yourhandle",
+  ].includes(url);
+}
+
+function getValidContactLinks(items) {
+  return items.filter((item) => item.url && !isPlaceholderContactUrl(item.url));
+}
+
+function syncContactAvailability(items) {
+  const hasContacts = items.length > 0;
+  contactTrigger.disabled = !hasContacts;
+  contactTrigger.setAttribute("aria-disabled", String(!hasContacts));
+  contactTrigger.textContent = hasContacts ? "Contact me" : "Contact unavailable";
+
+  if (contactPanel) {
+    contactPanel.hidden = !hasContacts;
+  }
+}
+
 function applyProfile(config) {
   profileName.textContent = config.name;
   profileTagline.textContent = config.tagline;
   profileAvatar.src = config.avatarSrc;
   profileAvatar.alt = `${config.name} avatar`;
+  profileAvatar.hidden = false;
 }
 
 function createLinkCard(item) {
@@ -97,13 +145,7 @@ function createLinkCard(item) {
     const placeholder = document.createElement("div");
     placeholder.className = `link-card disabled${item.highlight ? " highlight" : ""}`;
     placeholder.setAttribute("aria-disabled", "true");
-    placeholder.innerHTML = `
-      <span class="left">
-        <span class="emoji" aria-hidden="true">${item.icon}</span>
-        <span>${item.label}</span>
-      </span>
-      <span class="arrow" aria-hidden="true">•</span>
-    `;
+    appendCardContent(placeholder, item.icon, item.label, "•");
     return placeholder;
   }
 
@@ -112,13 +154,7 @@ function createLinkCard(item) {
   card.href = item.url;
   card.target = "_blank";
   card.rel = "noopener noreferrer";
-  card.innerHTML = `
-    <span class="left">
-      <span class="emoji" aria-hidden="true">${item.icon}</span>
-      <span>${item.label}</span>
-    </span>
-    <span class="arrow" aria-hidden="true">↗</span>
-  `;
+  appendCardContent(card, item.icon, item.label, "↗");
   card.setAttribute("aria-label", `${item.label} (opens in new tab)`);
   return card;
 }
@@ -134,14 +170,7 @@ function createContactLink(item) {
   }
 
   const icon = iconByContactType[item.type] ?? "🔗";
-  card.innerHTML = `
-    <span class="left">
-      <span class="emoji" aria-hidden="true">${icon}</span>
-      <span>${item.label}</span>
-    </span>
-    <span class="arrow" aria-hidden="true">→</span>
-  `;
-
+  appendCardContent(card, icon, item.label, "→");
   card.setAttribute("aria-label", `${item.label} contact option`);
   return card;
 }
@@ -149,14 +178,17 @@ function createContactLink(item) {
 function renderLinks() {
   socialLinksRoot.textContent = "";
   contactLinksRoot.textContent = "";
+  const validContactLinks = getValidContactLinks(contactLinks);
 
   socialLinks.forEach((item) => {
     socialLinksRoot.appendChild(createLinkCard(item));
   });
 
-  contactLinks.forEach((item) => {
+  validContactLinks.forEach((item) => {
     contactLinksRoot.appendChild(createContactLink(item));
   });
+
+  syncContactAvailability(validContactLinks);
 }
 
 function getFocusableInModal() {
@@ -186,6 +218,10 @@ function trapFocus(event) {
 }
 
 function openModal() {
+  if (contactTrigger.disabled) {
+    return;
+  }
+
   lastFocusedElement = document.activeElement;
   modalOverlay.hidden = false;
   document.body.classList.add("modal-open");
@@ -214,6 +250,10 @@ function handleKeydown(event) {
 }
 
 function bindEvents() {
+  profileAvatar.addEventListener("error", () => {
+    profileAvatar.hidden = true;
+  });
+
   contactTrigger.addEventListener("click", openModal);
   modalClose.addEventListener("click", closeModal);
 
