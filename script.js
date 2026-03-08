@@ -28,9 +28,14 @@ const socialLinks = [
     icon: "🌐",
   },
   {
-    label: "GitHub",
-    url: "https://github.com/Bluesky0094",
-    icon: "💻",
+    label: "Siti web - Ferramenta",
+    url: "https://bluesky0094.github.io/Ferramenta/",
+    icon: "🛠️",
+  },
+  {
+    label: "Siti web - Falegnameria",
+    url: "https://bluesky0094.github.io/Legno/",
+    icon: "🪵",
   },
 ];
 
@@ -38,22 +43,17 @@ const contactLinks = [
   {
     type: "call",
     label: "Call",
-    url: "tel:+10000000000",
+    url: "tel:+393478349694",
   },
   {
     type: "whatsapp",
     label: "WhatsApp",
-    url: "https://wa.me/10000000000",
+    url: "https://wa.me/393478349694",
   },
   {
     type: "email",
     label: "Email",
-    url: "mailto:you@example.com",
-  },
-  {
-    type: "instagram",
-    label: "Instagram DM",
-    url: "https://instagram.com/yourhandle",
+    url: "mailto:stefanocaccamo1@outlook.com",
   },
 ];
 
