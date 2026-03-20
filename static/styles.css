@@ -53,6 +53,7 @@ body.modal-open {
   filter: blur(34px);
   opacity: 0.6;
   animation: float 12s ease-in-out infinite;
+  will-change: transform;
 }
 
 .orb-a {
@@ -322,5 +323,16 @@ h1 {
   .profile-card,
   .contact-panel {
     order: 0;
+  }
+}
+
+@media (max-width: 979px) {
+  .bg-layer {
+    position: absolute;
+    min-height: 100%;
+  }
+
+  .orb-b {
+    bottom: 4rem;
   }
 }
