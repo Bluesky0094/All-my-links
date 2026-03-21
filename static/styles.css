@@ -53,6 +53,7 @@ body.modal-open {
   filter: blur(34px);
   opacity: 0.6;
   animation: float 12s ease-in-out infinite;
+  will-change: transform;
 }
 
 .orb-a {
@@ -97,8 +98,7 @@ body.modal-open {
 }
 
 .profile-card,
-.links-panel,
-.contact-panel {
+.links-panel {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
@@ -111,6 +111,10 @@ body.modal-open {
   padding: var(--space-5);
   margin: 0;
   order: 1;
+}
+
+.profile-card .contact-trigger {
+  margin-top: var(--space-4);
 }
 
 .profile-avatar {
@@ -195,12 +199,6 @@ h1 {
   opacity: 0.72;
   cursor: not-allowed;
   border-color: rgba(255, 255, 255, 0.2);
-}
-
-.contact-panel {
-  margin: 0;
-  padding: var(--space-4);
-  order: 3;
 }
 
 .contact-trigger {
@@ -293,8 +291,7 @@ h1 {
   }
 
   .profile-card,
-  .links-panel,
-  .contact-panel {
+  .links-panel {
     border-radius: 22px;
   }
 }
@@ -319,8 +316,18 @@ h1 {
     order: 0;
   }
 
-  .profile-card,
-  .contact-panel {
+  .profile-card {
     order: 0;
+  }
+}
+
+@media (max-width: 979px) {
+  .bg-layer {
+    position: absolute;
+    min-height: 100%;
+  }
+
+  .orb-b {
+    bottom: 4rem;
   }
 }
