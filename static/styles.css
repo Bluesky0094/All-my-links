@@ -116,7 +116,7 @@ body.modal-open {
 }
 
 .profile-card .contact-trigger {
-  margin-top: var(--space-5);
+  margin-top: var(--space-4);
 }
 
 .profile-avatar {
@@ -324,6 +324,11 @@ h1 {
 }
 
 @media (max-width: 979px) {
+  .bg-layer {
+    position: absolute;
+    min-height: 100%;
+  }
+
   .orb-b {
     bottom: 4rem;
   }
