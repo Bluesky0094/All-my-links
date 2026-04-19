@@ -86,6 +86,7 @@ const focusableSelector = [
 
 let lastFocusedElement = null;
 let modalOpenedAt = 0;
+let scrollLockY = 0;
 
 function appendCardContent(container, icon, label, arrow) {
   const left = document.createElement("span");
@@ -225,14 +226,29 @@ function openModal() {
 
   lastFocusedElement = document.activeElement;
   modalOpenedAt = Date.now();
+  scrollLockY = window.scrollY || window.pageYOffset || 0;
   modalOverlay.hidden = false;
   document.body.classList.add("modal-open");
-  contactModal.focus();
+  document.body.style.top = `-${scrollLockY}px`;
+  document.body.style.position = "fixed";
+  document.body.style.left = "0";
+  document.body.style.right = "0";
+  document.body.style.width = "100%";
+
+  if (typeof contactModal.focus === "function") {
+    contactModal.focus({ preventScroll: true });
+  }
 }
 
 function closeModal() {
   modalOverlay.hidden = true;
   document.body.classList.remove("modal-open");
+  document.body.style.position = "";
+  document.body.style.top = "";
+  document.body.style.left = "";
+  document.body.style.right = "";
+  document.body.style.width = "";
+  window.scrollTo(0, scrollLockY);
 
   if (lastFocusedElement instanceof HTMLElement) {
     lastFocusedElement.focus();
