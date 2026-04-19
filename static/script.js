@@ -86,7 +86,6 @@ const focusableSelector = [
 
 let lastFocusedElement = null;
 let modalOpenedAt = 0;
-let scrollLockY = 0;
 
 function appendCardContent(container, icon, label, arrow) {
   const left = document.createElement("span");
@@ -226,7 +225,6 @@ function openModal() {
 
   lastFocusedElement = document.activeElement;
   modalOpenedAt = Date.now();
-  scrollLockY = window.scrollY || window.pageYOffset || 0;
   modalOverlay.hidden = false;
   document.body.classList.add("modal-open");
   document.body.style.top = `-${scrollLockY}px`;
