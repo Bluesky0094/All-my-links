@@ -27,6 +27,8 @@ body {
   margin: 0;
   min-height: 100%;
   overscroll-behavior: none;
+  width: 100%;
+  overflow-x: clip;
 }
 
 body {
@@ -34,7 +36,7 @@ body {
   background: radial-gradient(circle at 20% 10%, #16345f 0%, var(--bg) 45%, #03070f 100%);
   color: var(--text);
   position: relative;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body.modal-open {
@@ -43,7 +45,7 @@ body.modal-open {
 
 .bg-layer {
   position: fixed;
-  inset: -20vmax;
+  inset: 0;
   pointer-events: none;
   z-index: 0;
   overflow: hidden;
