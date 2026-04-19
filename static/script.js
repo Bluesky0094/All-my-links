@@ -85,6 +85,7 @@ const focusableSelector = [
 ].join(",");
 
 let lastFocusedElement = null;
+let modalOpenedAt = 0;
 
 function appendCardContent(container, icon, label, arrow) {
   const left = document.createElement("span");
@@ -223,10 +224,10 @@ function openModal() {
   }
 
   lastFocusedElement = document.activeElement;
+  modalOpenedAt = Date.now();
   modalOverlay.hidden = false;
   document.body.classList.add("modal-open");
-  const focusables = getFocusableInModal();
-  (focusables[0] || contactModal).focus();
+  contactModal.focus();
 }
 
 function closeModal() {
@@ -258,6 +259,10 @@ function bindEvents() {
   modalClose.addEventListener("click", closeModal);
 
   modalOverlay.addEventListener("click", (event) => {
+    if (Date.now() - modalOpenedAt < 300) {
+      return;
+    }
+
     if (event.target === modalOverlay) {
       closeModal();
     }

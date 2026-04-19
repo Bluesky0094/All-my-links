@@ -27,6 +27,8 @@ body {
   margin: 0;
   min-height: 100%;
   overscroll-behavior: none;
+  width: 100%;
+  overflow-x: clip;
 }
 
 body {
@@ -34,7 +36,7 @@ body {
   background: radial-gradient(circle at 20% 10%, #16345f 0%, var(--bg) 45%, #03070f 100%);
   color: var(--text);
   position: relative;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body.modal-open {
@@ -43,7 +45,7 @@ body.modal-open {
 
 .bg-layer {
   position: fixed;
-  inset: -20vmax;
+  inset: 0;
   pointer-events: none;
   z-index: 0;
   overflow: hidden;
@@ -173,6 +175,7 @@ h1 {
   padding: 0.95rem 1rem;
   font-weight: 600;
   transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  touch-action: manipulation;
 }
 
 .link-card .left,
@@ -240,6 +243,7 @@ h1 {
   display: grid;
   place-items: center;
   padding: 1rem;
+  overflow-x: clip;
   background: rgba(3, 9, 18, 0.73);
 }
 
@@ -248,7 +252,11 @@ h1 {
 }
 
 .modal {
-  width: min(100%, 28rem);
+  width: min(28rem, 100%);
+  max-width: 100%;
+  max-height: calc(100dvh - 2rem);
+  overflow: auto;
+  margin: 0 auto;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
   background: var(--bg-elev);
