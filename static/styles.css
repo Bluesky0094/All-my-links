@@ -44,7 +44,6 @@ body.modal-open {
 .bg-layer {
   position: fixed;
   inset: -20vmax;
-  background: radial-gradient(circle at 20% 10%, #16345f 0%, var(--bg) 45%, #03070f 100%);
   pointer-events: none;
   z-index: 0;
   overflow: hidden;
@@ -117,7 +116,7 @@ body.modal-open {
 }
 
 .profile-card .contact-trigger {
-  margin-top: var(--space-5);
+  margin-top: var(--space-4);
 }
 
 .profile-avatar {
@@ -325,6 +324,11 @@ h1 {
 }
 
 @media (max-width: 979px) {
+  .bg-layer {
+    position: absolute;
+    min-height: 100%;
+  }
+
   .orb-b {
     bottom: 4rem;
   }
