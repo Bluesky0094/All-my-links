@@ -173,6 +173,7 @@ h1 {
   padding: 0.95rem 1rem;
   font-weight: 600;
   transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  touch-action: manipulation;
 }
 
 .link-card .left,
@@ -239,7 +240,8 @@ h1 {
   z-index: 10;
   display: grid;
   place-items: center;
-  padding: 1rem;
+  padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right))
+    max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
   background: rgba(3, 9, 18, 0.73);
 }
 
@@ -248,7 +250,11 @@ h1 {
 }
 
 .modal {
-  width: min(100%, 28rem);
+  width: min(28rem, calc(100vw - 2rem));
+  max-width: 100%;
+  max-height: calc(100dvh - 2rem);
+  overflow: auto;
+  margin: 0 auto;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
   background: var(--bg-elev);
