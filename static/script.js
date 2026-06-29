@@ -1,12 +1,12 @@
 const profileConfig = {
   name: "Stefano Caccamo",
   eyebrow: "Video editor · Web creator · Tech support",
-  tagline: "Video editing, siti web e assistenza digitale per presentarti meglio e ricevere più contatti.",
+  tagline: "Aiuto professionisti e piccole attività a trasformare idee, contenuti e servizi in esperienze digitali chiare, veloci e memorabili.",
   avatarSrc: "static/assets/avatar-ai.svg",
   stats: [
-    { value: "3", label: "servizi" },
-    { value: "48h", label: "risposta" },
-    { value: "1:1", label: "supporto" },
+    { value: "3", label: "servizi chiave" },
+    { value: "48h", label: "risposta rapida" },
+    { value: "1:1", label: "supporto diretto" },
   ],
 };
 
