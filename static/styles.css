@@ -6,6 +6,7 @@
   --muted: #b2c0d9;
   --primary: #32f6c5;
   --secondary: #ffc857;
+  --accent: #ff7a59;
   --border: rgba(226, 236, 255, 0.2);
   --shadow: 0 18px 48px rgba(0, 0, 0, 0.35);
   --radius-lg: 20px;
@@ -33,7 +34,7 @@ body {
 
 body {
   font-family: "Space Grotesk", sans-serif;
-  background: radial-gradient(circle at 20% 10%, #16345f 0%, var(--bg) 45%, #03070f 100%);
+  background: radial-gradient(circle at 20% 10%, #1c4a82 0%, var(--bg) 42%, #03070f 100%);
   color: var(--text);
   position: relative;
   overflow-x: clip;
@@ -108,6 +109,17 @@ body.modal-open {
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
   backdrop-filter: blur(8px);
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-card::before,
+.links-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(50, 246, 197, 0.16), transparent 32%, rgba(255, 200, 87, 0.12));
 }
 
 .profile-card {
@@ -115,6 +127,12 @@ body.modal-open {
   padding: var(--space-5);
   margin: 0;
   order: 1;
+}
+
+.profile-card > *,
+.links-panel > * {
+  position: relative;
+  z-index: 1;
 }
 
 .profile-card .contact-trigger {
@@ -143,15 +161,77 @@ h1 {
   letter-spacing: 0.01em;
 }
 
+.profile-eyebrow,
+.section-kicker {
+  margin: 0 0 var(--space-2);
+  color: var(--primary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
 #profile-tagline {
-  margin: var(--space-2) 0 0;
+  margin: var(--space-2) auto 0;
   color: var(--muted);
-  font-size: 0.98rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 27rem;
+}
+
+.profile-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.55rem;
+  list-style: none;
+  margin: var(--space-4) 0 0;
+  padding: 0;
+}
+
+.profile-stats li {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.8rem 0.55rem;
+}
+
+.profile-stats strong,
+.profile-stats span {
+  display: block;
+}
+
+.profile-stats strong {
+  color: var(--secondary);
+  font-family: "Sora", sans-serif;
+  font-size: 1.2rem;
+}
+
+.profile-stats span {
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.25;
 }
 
 .links-panel {
-  padding: var(--space-4);
+  padding: var(--space-5);
   order: 2;
+}
+
+.panel-intro {
+  margin-bottom: var(--space-4);
+}
+
+.panel-intro h2 {
+  font-size: clamp(1.6rem, 5vw, 2.5rem);
+  line-height: 1.05;
+  max-width: 12ch;
+}
+
+.panel-intro p:last-child {
+  color: var(--muted);
+  line-height: 1.65;
+  margin: var(--space-3) 0 0;
+  max-width: 42rem;
 }
 
 .links-list,
@@ -172,7 +252,7 @@ h1 {
   background: linear-gradient(145deg, rgba(20, 38, 61, 0.95), rgba(9, 20, 36, 0.95));
   color: var(--text);
   text-decoration: none;
-  padding: 0.95rem 1rem;
+  padding: 1rem;
   font-weight: 600;
   transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
   touch-action: manipulation;
@@ -183,11 +263,48 @@ h1 {
   display: inline-flex;
   align-items: center;
   gap: 0.65rem;
+  min-width: 0;
 }
 
 .link-card .emoji,
 .contact-link .emoji {
-  font-size: 1.15rem;
+  display: grid;
+  place-items: center;
+  width: 2.55rem;
+  height: 2.55rem;
+  flex: 0 0 auto;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 1.2rem;
+}
+
+.link-copy {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.link-label {
+  font-size: 1.02rem;
+}
+
+.link-description {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.link-badge {
+  align-self: flex-start;
+  border-radius: 999px;
+  background: rgba(255, 200, 87, 0.18);
+  color: var(--secondary);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.28rem 0.5rem;
+  text-transform: uppercase;
 }
 
 .link-card .arrow,
@@ -197,7 +314,8 @@ h1 {
 
 .link-card.highlight {
   border-color: rgba(50, 246, 197, 0.7);
-  background: linear-gradient(145deg, rgba(13, 63, 85, 0.95), rgba(12, 31, 58, 0.95));
+  background: linear-gradient(145deg, rgba(13, 88, 94, 0.98), rgba(12, 31, 58, 0.95));
+  box-shadow: 0 18px 38px rgba(50, 246, 197, 0.12);
 }
 
 .link-card.disabled {
@@ -328,6 +446,26 @@ h1 {
 
   .profile-card {
     order: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .profile-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .link-card,
+  .contact-link {
+    align-items: flex-start;
+  }
+
+  .link-card .left,
+  .contact-link .left {
+    align-items: flex-start;
+  }
+
+  .link-badge {
+    display: none;
   }
 }
 
