@@ -1,8 +1,13 @@
 const profileConfig = {
   name: "Stefano Caccamo",
   eyebrow: "Video editor · Web creator · Tech support",
-  tagline: "Video editing, siti web e assistenza digitale per presentarti meglio e ricevere più contatti.",
+  tagline: "Aiuto professionisti e piccole attività a trasformare idee, contenuti e servizi in esperienze digitali chiare, veloci e memorabili.",
   avatarSrc: "static/assets/avatar-ai.svg",
+  stats: [
+    { value: "3", label: "servizi chiave" },
+    { value: "48h", label: "risposta rapida" },
+    { value: "1:1", label: "supporto diretto" },
+  ],
 };
 
 const socialLinks = [
@@ -76,6 +81,7 @@ const profileName = document.getElementById("profile-name");
 const profileEyebrow = document.getElementById("profile-eyebrow");
 const profileTagline = document.getElementById("profile-tagline");
 const profileAvatar = document.getElementById("profile-avatar");
+const profileStatsRoot = document.getElementById("profile-stats");
 const socialLinksRoot = document.getElementById("social-links");
 const contactLinksRoot = document.getElementById("contact-links");
 const modalOverlay = document.getElementById("modal-overlay");
@@ -170,6 +176,12 @@ function applyProfile(config) {
   profileAvatar.alt = `${config.name} avatar`;
   profileAvatar.hidden = false;
 
+  profileStatsRoot.textContent = "";
+  config.stats.forEach((stat) => {
+    const item = document.createElement("li");
+    item.innerHTML = `<strong>${stat.value}</strong><span>${stat.label}</span>`;
+    profileStatsRoot.appendChild(item);
+  });
 }
 
 function createLinkCard(item) {
