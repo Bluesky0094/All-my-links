@@ -1,41 +1,48 @@
 const profileConfig = {
   name: "Stefano Caccamo",
-  tagline: "Creator | Founder | Personal Brand",
+  eyebrow: "Video editor · Web creator · Tech support",
+  tagline: "Video editing, siti web e assistenza digitale per presentarti meglio e ricevere più contatti.",
   avatarSrc: "static/assets/avatar-ai.svg",
 };
 
 const socialLinks = [
   {
     label: "Montaggio Video",
+    description: "Editing dinamico per reel, promo e contenuti social.",
     url: "https://creativecuts.work",
-    icon: "📸",
+    icon: "🎬",
     highlight: true,
-  },
-  {
-    label: "Grafica",
-    url: "",
-    icon: "🎵",
-    disabled: true,
+    badge: "In evidenza",
   },
   {
     label: "Siti web - Assistenza tecnologica",
+    description: "Landing page e supporto pratico per essere online senza stress.",
     url: "https://bluesky0094.github.io/Assistenza-tecnologica/",
-    icon: "▶️",
+    icon: "💻",
   },
   {
     label: "Siti web - Portfolio",
+    description: "Una vetrina ordinata per presentare lavori, identità e competenze.",
     url: "https://bluesky0094.github.io/Portfolio/",
     icon: "🌐",
   },
   {
     label: "Siti web - Ferramenta",
+    description: "Esempio di sito locale pensato per catalogo, fiducia e contatti.",
     url: "https://bluesky0094.github.io/Ferramenta/",
     icon: "🛠️",
   },
   {
     label: "Siti web - Falegnameria",
+    description: "Layout artigianale per raccontare servizi e lavorazioni su misura.",
     url: "https://bluesky0094.github.io/Legno/",
     icon: "🪵",
+  },
+  {
+    label: "Grafica",
+    description: "Web app per gestire account e contenuti grafici.",
+    url: "https://where-in.vercel.app/#accounts",
+    icon: "✨",
   },
 ];
 
@@ -65,6 +72,7 @@ const iconByContactType = {
 };
 
 const profileName = document.getElementById("profile-name");
+const profileEyebrow = document.getElementById("profile-eyebrow");
 const profileTagline = document.getElementById("profile-tagline");
 const profileAvatar = document.getElementById("profile-avatar");
 const socialLinksRoot = document.getElementById("social-links");
@@ -86,20 +94,40 @@ const focusableSelector = [
 
 let lastFocusedElement = null;
 let modalOpenedAt = 0;
+let scrollLockY = 0;
 
-function appendCardContent(container, icon, label, arrow) {
+function appendCardContent(container, item, arrow) {
   const left = document.createElement("span");
   left.className = "left";
 
   const iconNode = document.createElement("span");
   iconNode.className = "emoji";
   iconNode.setAttribute("aria-hidden", "true");
-  iconNode.textContent = icon;
+  iconNode.textContent = item.icon;
+
+  const text = document.createElement("span");
+  text.className = "link-copy";
 
   const labelNode = document.createElement("span");
-  labelNode.textContent = label;
+  labelNode.className = "link-label";
+  labelNode.textContent = item.label;
+  text.appendChild(labelNode);
 
-  left.append(iconNode, labelNode);
+  if (item.description) {
+    const descriptionNode = document.createElement("span");
+    descriptionNode.className = "link-description";
+    descriptionNode.textContent = item.description;
+    text.appendChild(descriptionNode);
+  }
+
+  left.append(iconNode, text);
+
+  if (item.badge) {
+    const badgeNode = document.createElement("span");
+    badgeNode.className = "link-badge";
+    badgeNode.textContent = item.badge;
+    left.appendChild(badgeNode);
+  }
 
   const arrowNode = document.createElement("span");
   arrowNode.className = "arrow";
@@ -126,7 +154,7 @@ function syncContactAvailability(items) {
   const hasContacts = items.length > 0;
   contactTrigger.disabled = !hasContacts;
   contactTrigger.setAttribute("aria-disabled", String(!hasContacts));
-  contactTrigger.textContent = hasContacts ? "Contact me" : "Contact unavailable";
+  contactTrigger.textContent = hasContacts ? "Parliamo del tuo progetto" : "Contatto non disponibile";
 
   if (contactPanel) {
     contactPanel.hidden = !hasContacts;
@@ -135,10 +163,12 @@ function syncContactAvailability(items) {
 
 function applyProfile(config) {
   profileName.textContent = config.name;
+  profileEyebrow.textContent = config.eyebrow;
   profileTagline.textContent = config.tagline;
   profileAvatar.src = config.avatarSrc;
   profileAvatar.alt = `${config.name} avatar`;
   profileAvatar.hidden = false;
+
 }
 
 function createLinkCard(item) {
@@ -146,7 +176,7 @@ function createLinkCard(item) {
     const placeholder = document.createElement("div");
     placeholder.className = `link-card disabled${item.highlight ? " highlight" : ""}`;
     placeholder.setAttribute("aria-disabled", "true");
-    appendCardContent(placeholder, item.icon, item.label, "•");
+    appendCardContent(placeholder, item, "•");
     return placeholder;
   }
 
@@ -155,8 +185,8 @@ function createLinkCard(item) {
   card.href = item.url;
   card.target = "_blank";
   card.rel = "noopener noreferrer";
-  appendCardContent(card, item.icon, item.label, "↗");
-  card.setAttribute("aria-label", `${item.label} (opens in new tab)`);
+  appendCardContent(card, item, "↗");
+  card.setAttribute("aria-label", `${item.label}: ${item.description ?? "open link"} (opens in new tab)`);
   return card;
 }
 
@@ -171,7 +201,7 @@ function createContactLink(item) {
   }
 
   const icon = iconByContactType[item.type] ?? "🔗";
-  appendCardContent(card, icon, item.label, "→");
+  appendCardContent(card, { ...item, icon }, "→");
   card.setAttribute("aria-label", `${item.label} contact option`);
   return card;
 }
@@ -224,6 +254,7 @@ function openModal() {
   }
 
   lastFocusedElement = document.activeElement;
+  scrollLockY = window.scrollY;
   modalOpenedAt = Date.now();
   modalOverlay.hidden = false;
   document.body.classList.add("modal-open");
