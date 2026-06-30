@@ -179,6 +179,47 @@ h1 {
   max-width: 27rem;
 }
 
+.profile-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.55rem;
+  list-style: none;
+  margin: var(--space-4) 0 0;
+  padding: 0;
+}
+
+.profile-stats li {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.8rem 0.55rem;
+}
+
+.profile-stats strong,
+.profile-stats span {
+  display: block;
+}
+
+.profile-stats strong {
+  color: var(--secondary);
+  font-family: "Sora", sans-serif;
+  font-size: 1.2rem;
+}
+
+.profile-stats span {
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.25;
+}
+
+.profile-stats span {
+  color: var(--muted);
+  font-size: 0.7rem;
+  line-height: 1.25;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
 .links-panel {
   padding: var(--space-5);
   order: 2;
@@ -417,6 +458,10 @@ h1 {
 }
 
 @media (max-width: 560px) {
+  .profile-stats {
+    grid-template-columns: 1fr;
+  }
+
   .link-card,
   .contact-link {
     align-items: flex-start;
