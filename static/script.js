@@ -1,61 +1,53 @@
 const profileConfig = {
   name: "Stefano Caccamo",
-  eyebrow: "Video editor · Web creator · Tech support",
-  tagline: "Aiuto professionisti e piccole attività a trasformare idee, contenuti e servizi in esperienze digitali chiare, veloci e memorabili.",
-  avatarSrc: "static/assets/avatar-ai.svg",
-  stats: [
-    { value: "3", label: "servizi chiave" },
-    { value: "48h", label: "risposta rapida" },
-    { value: "1:1", label: "supporto diretto" },
-  ],
+  eyebrow: "Video editor · Web creator · Supporto digitale",
+  tagline: "Aiuto professionisti e piccole attività a trasformare idee, contenuti e servizi in esperienze digitali chiare e concrete.",
 };
 
 const socialLinks = [
   {
-    label: "Montaggio Video",
-    description: "Editing dinamico per reel, promo e contenuti social.",
+    group: "Servizi",
+    label: "Video editing",
+    description: "Montaggio per reel, contenuti social, promo e comunicazione aziendale.",
     url: "https://creativecuts.work",
-    icon: "🎬",
+    icon: "01",
     highlight: true,
-    badge: "In evidenza",
+    badge: "Servizio principale",
   },
   {
-    label: "Siti web - Assistenza tecnologica",
-    description: "Landing page e supporto pratico per essere online senza stress.",
+    group: "Servizi",
+    label: "Siti web e supporto digitale",
+    description: "Siti essenziali, assistenza tecnologica e soluzioni pratiche per lavorare meglio.",
     url: "https://bluesky0094.github.io/Assistenza-tecnologica/",
-    icon: "💻",
+    icon: "02",
   },
   {
-    label: "Siti web - Portfolio",
-    description: "Una vetrina ordinata per presentare lavori, identità e competenze.",
+    group: "Progetti selezionati",
+    label: "Portfolio creativo",
+    description: "Grafica, identità visiva, contenuti digitali e lavori editoriali.",
     url: "https://bluesky0094.github.io/Portfolio/",
-    icon: "🌐",
+    icon: "A",
   },
   {
-    label: "Siti web - Ferramenta",
-    description: "Esempio di sito locale pensato per catalogo, fiducia e contatti.",
+    group: "Progetti selezionati",
+    label: "Ferratek Utensili",
+    description: "Sito commerciale e catalogo per uno showroom di utensili professionali.",
     url: "https://bluesky0094.github.io/Ferramenta/",
-    icon: "🛠️",
+    icon: "B",
   },
   {
-    label: "Siti web - Falegnameria",
-    description: "Layout artigianale per raccontare servizi e lavorazioni su misura.",
+    group: "Progetti selezionati",
+    label: "Rinaldi Legnami",
+    description: "Presenza digitale editoriale per un fornitore di legno e servizi B2B.",
     url: "https://bluesky0094.github.io/Legno/",
-    icon: "🪵",
-  },
-  {
-    label: "Grafica",
-    description: "Visual coordinati e contenuti grafici: presto disponibile.",
-    url: "",
-    icon: "✨",
-    disabled: true,
+    icon: "C",
   },
 ];
 
 const contactLinks = [
   {
     type: "call",
-    label: "Call",
+    label: "Telefono",
     url: "tel:+393478349694",
   },
   {
@@ -71,17 +63,15 @@ const contactLinks = [
 ];
 
 const iconByContactType = {
-  call: "📞",
-  whatsapp: "💬",
-  email: "✉️",
-  instagram: "📩",
+  call: "TEL",
+  whatsapp: "WA",
+  email: "@",
+  instagram: "IG",
 };
 
 const profileName = document.getElementById("profile-name");
 const profileEyebrow = document.getElementById("profile-eyebrow");
 const profileTagline = document.getElementById("profile-tagline");
-const profileAvatar = document.getElementById("profile-avatar");
-const profileStatsRoot = document.getElementById("profile-stats");
 const socialLinksRoot = document.getElementById("social-links");
 const contactLinksRoot = document.getElementById("contact-links");
 const modalOverlay = document.getElementById("modal-overlay");
@@ -108,7 +98,7 @@ function appendCardContent(container, item, arrow) {
   left.className = "left";
 
   const iconNode = document.createElement("span");
-  iconNode.className = "emoji";
+  iconNode.className = "link-index";
   iconNode.setAttribute("aria-hidden", "true");
   iconNode.textContent = item.icon;
 
@@ -172,35 +162,33 @@ function applyProfile(config) {
   profileName.textContent = config.name;
   profileEyebrow.textContent = config.eyebrow;
   profileTagline.textContent = config.tagline;
-  profileAvatar.src = config.avatarSrc;
-  profileAvatar.alt = `${config.name} avatar`;
-  profileAvatar.hidden = false;
-
-  profileStatsRoot.textContent = "";
-  config.stats.forEach((stat) => {
-    const item = document.createElement("li");
-    item.innerHTML = `<strong>${stat.value}</strong><span>${stat.label}</span>`;
-    profileStatsRoot.appendChild(item);
-  });
 }
 
 function createLinkCard(item) {
-  if (item.disabled || !item.url) {
-    const placeholder = document.createElement("div");
-    placeholder.className = `link-card disabled${item.highlight ? " highlight" : ""}`;
-    placeholder.setAttribute("aria-disabled", "true");
-    appendCardContent(placeholder, item, "•");
-    return placeholder;
-  }
-
   const card = document.createElement("a");
   card.className = `link-card${item.highlight ? " highlight" : ""}`;
   card.href = item.url;
   card.target = "_blank";
   card.rel = "noopener noreferrer";
   appendCardContent(card, item, "↗");
-  card.setAttribute("aria-label", `${item.label}: ${item.description ?? "open link"} (opens in new tab)`);
+  card.setAttribute("aria-label", `${item.label}: ${item.description ?? "apri link"} (si apre in una nuova scheda)`);
   return card;
+}
+
+function createLinkGroup(title, items) {
+  const section = document.createElement("section");
+  section.className = "link-group";
+
+  const heading = document.createElement("h3");
+  heading.className = "link-group-title";
+  heading.textContent = title;
+
+  const list = document.createElement("div");
+  list.className = "link-group-list";
+  items.forEach((item) => list.appendChild(createLinkCard(item)));
+
+  section.append(heading, list);
+  return section;
 }
 
 function createContactLink(item) {
@@ -215,7 +203,7 @@ function createContactLink(item) {
 
   const icon = iconByContactType[item.type] ?? "🔗";
   appendCardContent(card, { ...item, icon }, "→");
-  card.setAttribute("aria-label", `${item.label} contact option`);
+  card.setAttribute("aria-label", `Contatto tramite ${item.label}`);
   return card;
 }
 
@@ -224,8 +212,14 @@ function renderLinks() {
   contactLinksRoot.textContent = "";
   const validContactLinks = getValidContactLinks(contactLinks);
 
+  const groups = new Map();
   socialLinks.forEach((item) => {
-    socialLinksRoot.appendChild(createLinkCard(item));
+    if (!groups.has(item.group)) groups.set(item.group, []);
+    groups.get(item.group).push(item);
+  });
+
+  groups.forEach((items, title) => {
+    socialLinksRoot.appendChild(createLinkGroup(title, items));
   });
 
   validContactLinks.forEach((item) => {
@@ -309,10 +303,6 @@ function handleKeydown(event) {
 }
 
 function bindEvents() {
-  profileAvatar.addEventListener("error", () => {
-    profileAvatar.hidden = true;
-  });
-
   contactTrigger.addEventListener("click", openModal);
   modalClose.addEventListener("click", closeModal);
 
@@ -333,6 +323,7 @@ function init() {
   applyProfile(profileConfig);
   renderLinks();
   bindEvents();
+  document.getElementById("current-year").textContent = String(new Date().getFullYear());
 }
 
 init();

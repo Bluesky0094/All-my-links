@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="A personal links landing page for social profiles and direct contact options."
+      content="Servizi creativi, progetti selezionati e contatti di Stefano Caccamo."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Stefano Caccamo | All My Links" />
+    <meta property="og:title" content="Stefano Caccamo | Video, web e supporto digitale" />
     <meta
       property="og:description"
-      content="Video editing, websites, and direct contact links for Stefano Caccamo."
+      content="Video editing, siti web, supporto digitale e progetti selezionati."
     />
     <meta property="og:image" content="static/assets/social-preview.png" />
     <meta property="og:image:type" content="image/png" />
@@ -19,48 +19,42 @@
     <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="Stefano Caccamo" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Stefano Caccamo | All My Links" />
+    <meta name="twitter:title" content="Stefano Caccamo | Video, web e supporto digitale" />
     <meta
       name="twitter:description"
-      content="Video editing, websites, and direct contact links for Stefano Caccamo."
+      content="Video editing, siti web, supporto digitale e progetti selezionati."
     />
     <meta name="twitter:image" content="static/assets/social-preview.png" />
-    <title>Stefano Caccamo | Creative Links</title>
+    <title>Stefano Caccamo | Video, web e supporto digitale</title>
     <link rel="icon" type="image/svg+xml" href="static/assets/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Sora:wght@600;700&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="static/styles.css" />
   </head>
   <body>
     <div class="bg-layer" aria-hidden="true">
-      <div class="orb orb-a"></div>
-      <div class="orb orb-b"></div>
-      <div class="grid-mask"></div>
+      <span>SC</span>
     </div>
 
     <main class="page-shell" id="top">
       <div class="left-column">
         <section class="profile-card" aria-labelledby="profile-name">
-          <img
-            id="profile-avatar"
-            class="profile-avatar"
-            src="static/assets/avatar-ai.svg"
-            alt="Profile avatar"
-            width="96"
-            height="96"
-            loading="eager"
-            decoding="async"
-          />
-          <p id="profile-eyebrow" class="profile-eyebrow">Video editor · Web creator · Tech support</p>
+          <div class="profile-topline">
+            <div class="profile-monogram" aria-hidden="true">SC</div>
+            <p class="availability"><span></span>Disponibile per nuovi progetti</p>
+          </div>
+          <p id="profile-eyebrow" class="profile-eyebrow">Video editor · Web creator · Supporto digitale</p>
           <h1 id="profile-name">Stefano Caccamo</h1>
           <p id="profile-tagline">
-            Video editing, siti web e assistenza digitale per far crescere la tua presenza online.
+            Progetto contenuti e strumenti digitali chiari, utili e costruiti intorno alle persone.
           </p>
-          <ul id="profile-stats" class="profile-stats" aria-label="Highlights"></ul>
+          <ul class="profile-services" aria-label="Servizi principali">
+            <li>Video editing</li>
+            <li>Siti web</li>
+            <li>Supporto tecnologico</li>
+          </ul>
+          <div class="profile-details">
+            <span>Italia · Lavoro anche da remoto</span>
+            <a href="mailto:stefanocaccamo1@outlook.com">stefanocaccamo1@outlook.com</a>
+          </div>
           <button
             id="contact-trigger"
             class="contact-trigger"
@@ -68,20 +62,24 @@
             aria-haspopup="dialog"
             aria-controls="contact-modal"
           >
-            Contact me
+            Contattami
           </button>
         </section>
       </div>
 
       <section class="links-panel" aria-labelledby="links-title">
         <div class="panel-intro">
-          <p class="section-kicker">Scegli il prossimo passo</p>
-          <h2 id="links-title">Soluzioni pronte per farti notare.</h2>
+          <p class="section-kicker">Servizi e progetti</p>
+          <h2 id="links-title">Iniziamo da ciò che vuoi realizzare.</h2>
           <p>
-            Dai contenuti video alle landing page, ogni link porta a un esempio concreto di come posso aiutarti a comunicare meglio.
+            Esplora i miei servizi principali e una selezione di progetti web. Per una richiesta specifica, scrivimi direttamente.
           </p>
         </div>
         <div id="social-links" class="links-list"></div>
+        <footer class="page-footer">
+          <span>© <span id="current-year"></span> Stefano Caccamo</span>
+          <a href="#top">Torna su</a>
+        </footer>
       </section>
     </main>
 
@@ -100,12 +98,15 @@
         tabindex="-1"
       >
         <header class="modal-header">
-          <h2 id="contact-title">Choose contact method</h2>
+          <div>
+            <p class="modal-kicker">Contatto diretto</p>
+            <h2 id="contact-title">Parliamo del tuo progetto.</h2>
+          </div>
           <button
             id="modal-close"
             class="icon-close"
             type="button"
-            aria-label="Close contact options"
+            aria-label="Chiudi le opzioni di contatto"
           >
             <span aria-hidden="true">×</span>
           </button>
