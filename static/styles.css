@@ -26,3 +26,77 @@ html,body{width:100%;overflow-x:hidden}
   .contact-toggle{padding:0 .65rem;font-size:.62rem}
   .contact-toggle span{margin-left:.45rem}
 }
+
+/* Viewport fit audit: every poster element must size from the available screen. */
+img,svg,video,main,section,nav,header,footer,aside{max-width:100%}
+main,section,nav,header,footer,aside,.hero-foot,.band,.band strong,.drawer>a,.drawer>a strong{min-width:0}
+.signature,.hero-foot span,.band strong,.closing a,.drawer strong{overflow-wrap:anywhere}
+.toast{max-width:calc(100vw - 2rem)}
+
+@media(max-width:700px){
+  .poster-head{grid-template-columns:minmax(0,1fr) auto auto;min-height:64px;padding:0 0 0 .75rem}
+  .signature{font-size:clamp(.85rem,4vw,1rem)}
+  .status{height:64px}
+  .contact-toggle{height:64px}
+  .poster-hero{min-height:calc(100svh - 64px);padding:clamp(1rem,5vw,1.5rem);gap:1.5rem}
+  .poster-hero>p{margin:0}
+  .poster-hero h1{width:100%;max-width:100%;font-size:clamp(3.35rem,18vw,5.4rem);line-height:.74;letter-spacing:-.055em}
+  .hero-foot{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.75rem}
+  .hero-foot>span{max-width:18ch}
+  .hero-foot button{max-width:100%;white-space:normal}
+  .band{grid-template-columns:minmax(0,1fr) auto;gap:.5rem;min-height:clamp(140px,42vw,180px);padding:1rem}
+  .band span{grid-column:1/-1}
+  .band strong{max-width:100%;font-size:clamp(2rem,11vw,4rem);line-height:.86;letter-spacing:-.025em}
+  .band i{font-size:clamp(1.5rem,8vw,2.5rem)}
+  .band:hover{padding-left:1rem}
+  .band::after{right:1rem;max-width:calc(100% - 2rem);font-size:3rem;white-space:nowrap}
+  .closing{padding:clamp(4rem,18vw,6rem) 1rem}
+  .closing a{display:block;max-width:100%;font-size:clamp(2.8rem,13vw,5rem);line-height:.84;letter-spacing:-.025em}
+  footer{align-items:center}
+  .drawer{right:0;max-width:100vw;height:100dvh;padding:clamp(.75rem,4vw,1.25rem);overflow-y:auto;overscroll-behavior:contain}
+  .drawer header{margin-bottom:clamp(1rem,5dvh,2.5rem);padding-bottom:clamp(.6rem,3dvh,1.25rem)}
+  .drawer header p{font-size:clamp(2.4rem,12vw,4rem);line-height:.9}
+  .drawer>a{grid-template-columns:minmax(0,1fr) auto;padding:clamp(.8rem,3dvh,1.5rem) 0}
+  .drawer>a strong{max-width:100%;font-size:clamp(1.5rem,7vw,2.5rem)}
+}
+
+@media(max-width:520px){
+  .poster-head{grid-template-columns:minmax(0,1fr) auto}
+  .status{display:none}
+}
+
+@media(max-width:360px){
+  .contact-toggle{padding:0 .55rem;font-size:.58rem}
+  .contact-toggle span{margin-left:.35rem}
+  .hero-foot{grid-template-columns:1fr}
+  .hero-foot button{justify-self:start}
+  .band strong{font-size:clamp(1.85rem,10.5vw,2.5rem)}
+  footer span:nth-child(2){width:100%;order:3}
+}
+
+/* Mobile headline: preserve the oversized desktop-poster rhythm without overflow. */
+@media(max-width:700px){
+  .poster-hero h1{
+    font-size:clamp(4.6rem,24.5vw,7rem);
+    line-height:.62;
+    letter-spacing:-.07em;
+  }
+  .poster-hero h1::first-line{font-size:1.25em}
+  .poster-hero h1 em{
+    display:inline-block;
+    margin-block:-.035em -.02em;
+    font-size:1.34em;
+    line-height:.62;
+    letter-spacing:-.075em;
+  }
+}
+
+@media(max-height:520px) and (max-width:900px){
+  .poster-hero{min-height:calc(100dvh - 64px);gap:.65rem}
+  .poster-hero h1{font-size:clamp(2.8rem,15dvh,4.5rem);line-height:.72}
+  .poster-hero h1::first-line,.poster-hero h1 em{font-size:1em}
+  .drawer header{margin-bottom:.65rem;padding-bottom:.5rem}
+  .drawer header p{font-size:2.2rem}
+  .drawer>a{padding:.6rem 0}
+  .drawer>a strong{font-size:clamp(1.3rem,6dvh,2rem)}
+}

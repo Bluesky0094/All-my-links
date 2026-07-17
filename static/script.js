@@ -8,9 +8,10 @@
     drawer.hidden=!open;
     document.body.classList.toggle("drawer-open",open);
     toggle.setAttribute("aria-expanded",String(open));
-    if(open){lastFocus=document.activeElement;close.focus();}else{lastFocus?.focus();}
+    drawer.setAttribute("aria-hidden",String(!open));
+    if(open){lastFocus=document.activeElement;drawer.scrollTop=0;close.focus();}else{lastFocus?.focus();}
   }
-  toggle.addEventListener("click",()=>setDrawer(true));
+  toggle.addEventListener("click",()=>setDrawer(drawer.hidden));
   close.addEventListener("click",()=>setDrawer(false));
   document.addEventListener("keydown",event=>{
     if(event.key==="Escape"&&!drawer.hidden){setDrawer(false);return;}
