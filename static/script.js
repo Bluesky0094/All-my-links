@@ -25,6 +25,5 @@
     try{await navigator.clipboard.writeText("stefanocaccamo1@outlook.com");toast.hidden=false;setTimeout(()=>toast.hidden=true,1800);}
     catch{location.href="mailto:stefanocaccamo1@outlook.com";}
   });
-  const clock=()=>{document.querySelector("[data-time]").textContent=new Intl.DateTimeFormat("it-IT",{timeZone:"Europe/Rome",hour:"2-digit",minute:"2-digit"}).format(new Date());};
-  clock();setInterval(clock,30000);document.querySelector("[data-year]").textContent=new Date().getFullYear();
+  document.querySelector("[data-year]").textContent=new Date().getFullYear();
 })();
