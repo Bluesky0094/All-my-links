@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Stefano Caccamo links">
+  <rect width="64" height="64" rx="10" fill="#1647ff"/>
+  <path d="M11 12h30v9H26l27 27-7 7-27-27v15h-8z" fill="#d9ff43"/>
+  <circle cx="48" cy="16" r="7" fill="#ff5a36"/>
+</svg>
