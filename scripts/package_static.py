@@ -5,6 +5,7 @@ out = root / 'dist'
 if out.exists():
     shutil.rmtree(out)
 out.mkdir()
-shutil.copy2(root / 'index.html', out / 'index.html')
+for page in ('index.html', 'profilo.html'):
+    shutil.copy2(root / page, out / page)
 shutil.copytree(root / 'static', out / 'static', dirs_exist_ok=True)
 print('Static site packaged in dist/')

@@ -1,54 +1,78 @@
 <!doctype html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#080808">
-  <meta name="description" content="Stefano Caccamo: creatività, siti web, supporto tecnologico e coordinamento turistico. Competenze diverse, un unico punto di riferimento per la tua attività.">
-  <meta property="og:title" content="Stefano Caccamo — Tante competenze. Una sola persona.">
-  <meta property="og:description" content="Design, video, web, tecnologia e turismo. Scopri il mio percorso e come posso aiutare la tua attività.">
-  <meta property="og:image" content="static/assets/social-preview.png">
-  <title>Stefano Caccamo — Tante competenze. Una sola persona.</title>
-  <link rel="icon" type="image/svg+xml" href="static/assets/favicon.svg">
-  <link rel="stylesheet" href="static/styles.css">
-  <script src="static/script.js" defer></script>
+  <meta name="theme-color" content="#f8f8f6">
+  <meta name="description" content="Sono Stefano Caccamo. A Modica mi occupo di design, video, siti web, assistenza digitale e coordinamento turistico.">
+  <meta property="og:title" content="Stefano Caccamo — Cosa posso fare per te?">
+  <meta property="og:description" content="Grafica, video, web, tecnologia e turismo, da Modica.">
+  <meta property="og:image" content="https://bluesky0094.github.io/All-my-links/static/assets/carta.webp">
+  <title>Stefano Caccamo — Cosa posso fare per te?</title>
+  <link rel="icon" href="static/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="static/assets/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="static/home.css">
+  <script src="static/home.js" defer></script>
+  <script type="module" src="static/paper-controls.js"></script>
 </head>
 <body>
-  <a class="skip-link" href="#profilo">Vai al contenuto</a>
-  <div class="reading-progress" aria-hidden="true"></div>
-  <header class="site-header">
-    <a class="brand" href="#inizio" aria-label="Stefano Caccamo, inizio"><span class="brand-mark" aria-hidden="true">✳</span><span>STEFANO<br>CACCAMO</span></a>
-    <nav class="desktop-nav" aria-label="Navigazione principale"><a href="#profilo">Il profilo</a><a href="#competenze">Cosa faccio</a><a href="#esperienze">Il percorso</a><a href="#progetti">Progetti</a></nav>
-    <a class="contact-link" href="#contatti">Parliamone <span aria-hidden="true">+</span></a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Apri menu"><span></span><span></span></button>
+  <a class="skip" href="#contenuto">Vai al contenuto</a>
+  <header class="mast">
+    <a class="identity" href="#inizio" aria-label="Stefano Caccamo, inizio">
+      <span class="monogram" aria-hidden="true">sc.</span><span>Stefano Caccamo</span>
+    </a>
+    <a class="quiet-link" href="profilo.html#profilo">Il mio profilo <i class="arrow diagonal" aria-hidden="true"></i></a>
   </header>
-  <nav id="mobile-nav" class="mobile-nav" aria-label="Navigazione mobile" hidden><a href="#profilo">Il profilo</a><a href="#competenze">Cosa faccio</a><a href="#esperienze">Il percorso</a><a href="#progetti">Progetti</a><a href="#contatti">Parliamone</a></nav>
-  <main>
-    <section class="hero section-theme" id="inizio" data-accent="#ff6b35" aria-labelledby="hero-title">
-      <div class="hero-top"><p class="eyebrow">CREATIVO. TECNICO. OPERATIVO.</p><p class="eyebrow location">MODICA, SICILIA <span> / </span> ANCHE DA REMOTO</p></div>
-      <div class="hero-layout">
-        <h1 id="hero-title"><span>Tante</span><span>competenze.</span><span class="outline">Una sola</span><span class="accent-text">persona<span class="period">.</span></span></h1>
-        <div class="hero-aside"><span class="hero-asterisk" aria-hidden="true">✳</span><p class="hero-name">Ciao, sono Stefano.</p><p class="hero-description">Metto insieme creatività, tecnologia e organizzazione per dare una mano concreta alla tua attività. Dall’idea al lavoro di ogni giorno.</p><a class="button button-accent" href="#competenze">Scopri cosa posso fare</a><div class="hero-caption"><span>UN PROFILO, PIÙ PROSPETTIVE</span><span class="role-word" aria-live="off">Designer</span></div></div>
+  <main id="contenuto" tabindex="-1">
+    <section class="panel intro" id="inizio" aria-labelledby="hello">
+      <div class="intro-copy">
+        <h1 id="hello" tabindex="-1">Ciao, sono<br><strong>Stefano.</strong></h1>
+        <p>Un giorno disegno un menu, un altro costruisco un sito. Durante la stagione coordino esperienze di cucina in Sicilia.</p>
+        <a class="primary" href="#servizi">Cosa posso fare per te? <i class="arrow" aria-hidden="true"></i></a>
       </div>
-      <div class="hero-bottom"><span>SC / PROFILO PROFESSIONALE</span><span>SCORRI, CI SONO PIÙ LATI DA SCOPRIRE</span><span>SC — 2026</span></div>
+      <div class="art">
+        <div class="paper-stage">
+          <img src="static/assets/carta.webp" width="1024" height="1024" alt="Una striscia di carta ripiegata a forma di S." fetchpriority="high">
+          <canvas hidden aria-label="Ruota la scultura di carta" aria-describedby="paper-help" role="slider" aria-valuemin="0" aria-valuemax="359" aria-valuenow="0"></canvas>
+          <span id="paper-help" hidden>Trascina in orizzontale o usa le frecce sinistra e destra.</span>
+          <span class="paper-hint" hidden aria-hidden="true">Trascina per ruotare</span>
+          <button class="paper-motion" hidden type="button" aria-label="Pausa rotazione" title="Pausa rotazione"></button>
+        </div>
+      </div>
     </section>
-    <div class="ticker" aria-hidden="true"><div>DESIGN <b>✳</b> VIDEO <b>✳</b> WEB <b>✳</b> TECH <b>✳</b> TURISMO <b>✳</b> DESIGN <b>✳</b> VIDEO <b>✳</b> WEB <b>✳</b> TECH <b>✳</b> TURISMO <b>✳</b></div></div>
-    <section id="profilo" class="profile section-theme section-pad" data-accent="#bb83ff" aria-labelledby="profile-title">
-      <div class="section-label"><span>01 / IL PROFILO</span><span>SICILIA NEL PUNTO DI VISTA.</span></div>
-      <div class="profile-grid"><h2 id="profile-title" class="reveal">Mi piace capire.<br>Mi piace creare.<br><span class="accent-text">Mi piace risolvere.</span></h2><div class="profile-copy reveal"><p class="lead">Sono Stefano Caccamo. Il mio lavoro vive nell’incontro tra persone, idee e strumenti.</p><p>Durante la stagione lavoro nel coordinamento turistico in Sicilia. Porto avanti anche progetti di grafica, montaggio video, siti web e assistenza tecnologica. Sono mondi diversi, che ogni giorno mi insegnano a vedere lo stesso problema da più prospettive.</p><p>Per un’attività significa avere una persona capace di seguire la comunicazione, costruire strumenti utili e aiutare quando la tecnologia si mette di mezzo. Con un approccio pratico, vicino a chi il lavoro lo fa davvero.</p><dl class="profile-facts"><div><dt>BASE</dt><dd>Modica · Sicilia</dd></div><div><dt>LINGUE</dt><dd>Italiano · Inglese</dd></div><div><dt>COME LAVORO</dt><dd>In presenza · Da remoto</dd></div></dl></div></div>
+    <section class="panel services" id="servizi" aria-labelledby="services-title">
+      <div class="service-intro">
+        <a class="back quiet-link" href="#inizio"><i class="arrow" aria-hidden="true"></i> Presentazione</a>
+        <h2 id="services-title" tabindex="-1">Cosa ti<br><strong>serve?</strong></h2>
+      </div>
+      <div class="choices">
+        <details name="servizio">
+          <summary>Grafica e video <i class="plus" aria-hidden="true"></i></summary>
+          <div class="answer"><p>Disegno identità, menu e materiali per eventi. Monto video, reel e contenuti per i social.</p>
+            <a href="https://bluesky0094.github.io/Portfolio/">Portfolio grafico ↗</a><a href="https://creativecuts.work">Creative Cuts ↗</a></div>
+        </details>
+        <details name="servizio">
+          <summary>Siti e strumenti web <i class="plus" aria-hidden="true"></i></summary>
+          <div class="answer"><p>Realizzo siti per presentare un’attività e strumenti per chi ci lavora, dagli ordini alle checklist.</p>
+            <a href="https://acasadimassi.it/">A casa di Massi ↗</a><a href="https://bluesky0094.github.io/Legno/">Nord Legnami ↗</a><a href="https://bluesky0094.github.io/Ferramenta/">Cantiere 24 ↗</a></div>
+        </details>
+        <details name="servizio">
+          <summary>Assistenza digitale <i class="plus" aria-hidden="true"></i></summary>
+          <div class="answer"><p>Ti aiuto con dispositivi, account e pratiche digitali. Lavoro a Modica e da remoto.</p>
+            <a href="https://bluesky0094.github.io/Assistenza-tecnologica/">Scopri i servizi di assistenza ↗</a></div>
+        </details>
+        <details name="servizio">
+          <summary>Turismo in Sicilia <i class="plus" aria-hidden="true"></i></summary>
+          <div class="answer"><p>Con WhereIn Cooking Holidays coordino ospiti, fornitori e programmi per esperienze di cucina e territorio, in italiano e in inglese.</p>
+            <a href="profilo.html#esperienze">Il mio percorso ↗</a><a href="mailto:stefanocaccamo1@outlook.com">Scrivimi ↗</a></div>
+        </details>
+      </div>
     </section>
-    <section id="competenze" class="skills-intro section-pad section-theme" data-accent="#5896ff" aria-labelledby="skills-title"><div class="section-label"><span>02 / COSA POSSO FARE PER TE</span><span>IL CAPPELLO GIUSTO, AL MOMENTO GIUSTO.</span></div><div class="skills-heading"><h2 id="skills-title" class="reveal">Più competenze.<br><span class="accent-text">Meno passaggi.</span></h2><p class="reveal">Un volantino, un sito, un video, un problema tecnico o un’esperienza da organizzare. Partiamo da quello che serve alla tua attività.</p></div><nav class="skill-index" aria-label="Esplora le competenze"><a href="#design" style="--chip:#ff5c64">01 Design</a><a href="#video" style="--chip:#b888ff">02 Video</a><a href="#web" style="--chip:#5896ff">03 Web</a><a href="#tech" style="--chip:#b4f64a">04 Tech</a><a href="#turismo" style="--chip:#ff8b42">05 Turismo</a></nav></section>
-    <section id="design" class="discipline section-theme" data-accent="#ff5c64" aria-labelledby="design-title"><div class="discipline-number">01</div><div class="discipline-title reveal"><p class="eyebrow">DARE FORMA ALLE IDEE</p><h3 id="design-title">Design &<br><span class="accent-text">identità.</span></h3><p class="discipline-line">Il primo impatto conta.<br>Facciamolo parlare di te.</p></div><div class="discipline-detail reveal"><p>Creo materiali visivi che tengono insieme personalità e chiarezza: dall’identità di un’attività alla comunicazione di un evento.</p><ul><li>Loghi e restyling dell’identità visiva</li><li>Locandine, flyer e grafiche social</li><li>Menu, presentazioni e documenti</li><li>Fotoritocco e materiali per la stampa</li></ul><div class="skill-tags"><span>Photoshop</span><span>Grafica digitale</span><span>Stampa</span></div><a class="text-link" href="https://bluesky0094.github.io/Portfolio/" target="_blank" rel="noopener">Esplora il portfolio</a></div></section>
-    <section id="video" class="discipline section-theme" data-accent="#b888ff" aria-labelledby="video-title"><div class="discipline-number">02</div><div class="discipline-title reveal"><p class="eyebrow">METTERE LE STORIE IN MOVIMENTO</p><h3 id="video-title">Video &<br><span class="accent-text">contenuti.</span></h3><p class="discipline-line">Trovare il ritmo.<br>Tenere l’attenzione.</p></div><div class="discipline-detail reveal"><p>Trasformo riprese e idee in contenuti con una direzione precisa. Il montaggio diventa uno strumento per raccontare un luogo, un evento o un’attività.</p><ul><li>Montaggio video e post-produzione</li><li>Reel e formati per i social</li><li>Video per eventi e sponsor</li><li>Animazioni grafiche e titoli</li></ul><div class="skill-tags"><span>After Effects</span><span>Video editing</span><span>Motion</span></div><a class="text-link" href="https://creativecuts.work" target="_blank" rel="noopener">Scopri Creative Cuts</a></div></section>
-    <section id="web" class="discipline section-theme" data-accent="#5896ff" aria-labelledby="web-title"><div class="discipline-number">03</div><div class="discipline-title reveal"><p class="eyebrow">COSTRUIRE QUALCOSA DI UTILE</p><h3 id="web-title">Web &<br><span class="accent-text">strumenti.</span></h3><p class="discipline-line">La tua attività online.<br>Il tuo lavoro più semplice.</p></div><div class="discipline-detail reveal"><p>Realizzo siti e sviluppo strumenti digitali partendo dai processi reali. Penso a chi li userà, dal cliente sul telefono a chi gestisce ordini e attività.</p><ul><li>Siti vetrina e pagine di presentazione</li><li>Esperienze curate anche su mobile</li><li>Web app per ordini e checklist</li><li>Organizzazione e manutenzione dei contenuti</li></ul><div class="skill-tags"><span>Siti web</span><span>Web app</span><span>Flussi di lavoro</span></div><a class="text-link" href="https://bluesky0094.github.io/A-casa-di-Massi/" target="_blank" rel="noopener">Visita A casa di Massi</a></div></section>
-    <section id="tech" class="discipline section-theme" data-accent="#b4f64a" aria-labelledby="tech-title"><div class="discipline-number">04</div><div class="discipline-title reveal"><p class="eyebrow">FAR FUNZIONARE LE COSE</p><h3 id="tech-title">Tech &<br><span class="accent-text">supporto.</span></h3><p class="discipline-line">Meno complicazioni.<br>Più autonomia.</p></div><div class="discipline-detail reveal"><p>Aiuto persone e piccole attività a usare meglio la tecnologia. Risolvo problemi pratici e spiego i passaggi, con attenzione alla sicurezza degli account.</p><ul><li>Assistenza PC, smartphone e tablet</li><li>Configurazione di dispositivi e servizi</li><li>Gestione account, password e accessi</li><li>Supporto digitale in presenza e da remoto</li></ul><div class="skill-tags"><span>Windows · Linux</span><span>iOS · Android</span><span>Sicurezza digitale</span></div><a class="text-link" href="https://bluesky0094.github.io/Assistenza-tecnologica/" target="_blank" rel="noopener">Scopri Assistenza Tech</a></div></section>
-    <section id="turismo" class="discipline section-theme" data-accent="#ff8b42" aria-labelledby="tourism-title"><div class="discipline-number">05</div><div class="discipline-title reveal"><p class="eyebrow">PRENDERSI CURA DELL’ESPERIENZA</p><h3 id="tourism-title">Turismo &<br><span class="accent-text">organizzazione.</span></h3><p class="discipline-line">Le persone al centro.<br>I dettagli al posto giusto.</p></div><div class="discipline-detail reveal"><p>Il coordinamento turistico mi ha insegnato a tenere insieme ospiti, fornitori, tempi e imprevisti. Porto questa attenzione operativa anche negli altri progetti.</p><ul><li>Coordinamento di attività e programmi</li><li>Supporto agli ospiti in italiano e inglese</li><li>Organizzazione e rapporti con i fornitori</li><li>Esperienze legate a cucina e territorio</li></ul><div class="skill-tags"><span>Ospitalità</span><span>Logistica</span><span>Relazioni</span></div><a class="text-link" href="#esperienze">Conosci il mio percorso</a></div></section>
-    <section id="esperienze" class="experience section-theme section-pad" data-accent="#bb83ff" aria-labelledby="experience-title"><div class="section-label"><span>03 / IL PERCORSO</span><button class="print-button" type="button">Stampa il profilo</button></div><div class="experience-layout"><div class="experience-heading reveal"><h2 id="experience-title">Esperienze<br>che si<br><span class="accent-text">incontrano.</span></h2><p>Non compartimenti separati.<br>Competenze che si arricchiscono a vicenda.</p></div><div class="experience-list"><article class="experience-row reveal"><span class="experience-category">TURISMO & OPERATIVITÀ</span><h3>WhereIn Cooking Holidays</h3><p>Coordinamento turistico e supporto operativo per esperienze di cucina e territorio. Dalle esigenze quotidiane è nato anche il lavoro su strumenti digitali per ordini e checklist.</p></article><article class="experience-row reveal"><span class="experience-category">CREATIVITÀ & DIGITALE</span><h3>Progetti freelance</h3><p>Grafica, montaggio video, siti e documenti per attività locali e professionisti. Un lavoro che parte dall’ascolto e arriva a materiali pronti da usare.</p></article><article class="experience-row reveal"><span class="experience-category">EVENTI & COMUNICAZIONE</span><h3>FriginFest</h3><p>Contenuti video per sponsor, materiali grafici, comunicazione social e supporti per lo staff: più formati, un’unica identità per l’evento.</p></article><article class="experience-row reveal"><span class="experience-category">ASSISTENZA & RELAZIONI</span><h3>Supporto tecnologico</h3><p>Assistenza pratica a persone e attività: dispositivi, account e strumenti digitali. Soluzioni spiegate con chiarezza, per rendere chi le usa più autonomo.</p></article></div></div></section>
-    <section id="progetti" class="projects section-theme section-pad" data-accent="#b4f64a" aria-labelledby="projects-title"><div class="section-label"><span>04 / DALLE PAROLE AI PROGETTI</span><span>UNA SELEZIONE DEL MIO LAVORO</span></div><div class="projects-heading"><h2 id="projects-title" class="reveal">Idee messe<br><span class="accent-text">al lavoro.</span></h2><a class="text-link" href="https://bluesky0094.github.io/Portfolio/" target="_blank" rel="noopener">Tutto il portfolio</a></div><div class="project-gallery"><a class="visual-project reveal" href="https://bluesky0094.github.io/Portfolio/" target="_blank" rel="noopener"><div class="project-image"><img src="static/assets/friginfest.webp" alt="Progetto grafico FriginFest dal portfolio di Stefano Caccamo" loading="lazy" width="1081" height="1081"></div><div class="project-meta"><h3>FriginFest</h3><span>EVENTI / COMUNICAZIONE</span></div></a><a class="visual-project reveal" href="https://bluesky0094.github.io/Portfolio/" target="_blank" rel="noopener"><div class="project-image"><img src="static/assets/menu-design.webp" alt="Progetto di menu dal portfolio di Stefano Caccamo" loading="lazy" width="1080" height="1080"></div><div class="project-meta"><h3>Design per l’ospitalità</h3><span>GRAFICA / STAMPA</span></div></a></div><div class="project-links"><a href="https://bluesky0094.github.io/A-casa-di-Massi/" target="_blank" rel="noopener"><span class="project-id">01</span><h3>A casa di Massi</h3><span>OSPITALITÀ / SITO WEB</span><span class="project-open">Visita</span></a><a href="https://creativecuts.work" target="_blank" rel="noopener"><span class="project-id">02</span><h3>Creative Cuts</h3><span>VIDEO / MONTAGGIO</span><span class="project-open">Visita</span></a><a href="https://bluesky0094.github.io/Assistenza-tecnologica/" target="_blank" rel="noopener"><span class="project-id">03</span><h3>Assistenza Tech</h3><span>SUPPORTO / SERVIZI</span><span class="project-open">Visita</span></a><a href="https://bluesky0094.github.io/Legno/" target="_blank" rel="noopener"><span class="project-id">04</span><h3>Nord Legnami</h3><span>WEB CONCEPT</span><span class="project-open">Visita</span></a><a href="https://bluesky0094.github.io/Ferramenta/" target="_blank" rel="noopener"><span class="project-id">05</span><h3>Cantiere 24</h3><span>WEB CONCEPT</span><span class="project-open">Visita</span></a></div></section>
-    <section class="method section-theme section-pad" data-accent="#5896ff" aria-labelledby="method-title"><div class="section-label"><span>05 / COME LAVORIAMO INSIEME</span></div><h2 id="method-title" class="reveal">Partiamo da<br><span class="accent-text">quello che ti serve.</span></h2><div class="method-grid"><article class="reveal"><span>01 / ASCOLTO</span><h3>Capire il contesto.</h3><p>Mi racconti la tua attività, cosa vuoi ottenere e cosa oggi ti fa perdere tempo.</p></article><article class="reveal"><span>02 / DIREZIONE</span><h3>Mettere a fuoco.</h3><p>Definiamo priorità, materiali e strumenti. Con passaggi chiari e un obiettivo concreto.</p></article><article class="reveal"><span>03 / REALIZZAZIONE</span><h3>Far succedere le cose.</h3><p>Porto avanti il lavoro, condivido gli sviluppi e ti aiuto a usare ciò che abbiamo costruito.</p></article></div></section>
-    <section id="contatti" class="contact section-theme section-pad" data-accent="#ff6b35" aria-labelledby="contact-title"><div class="section-label"><span>06 / IL PROSSIMO PROGETTO?</span><span>INIZIA DA UNA CONVERSAZIONE.</span></div><h2 id="contact-title" class="reveal">Hai un’idea?<br><span class="accent-text">Mettiamola<br class="mobile-break"> in moto.</span></h2><div class="contact-bottom"><p>Raccontami di cosa hai bisogno.<br>Troviamo il modo di farlo funzionare.</p><div class="contact-actions"><a class="button button-accent" href="https://wa.me/393478349694" target="_blank" rel="noopener">Scrivimi su WhatsApp</a><a class="button button-outline" href="mailto:stefanocaccamo1@outlook.com">Mandami un’email</a></div></div><div class="contact-details"><a href="mailto:stefanocaccamo1@outlook.com">stefanocaccamo1@outlook.com</a><button type="button" data-copy-email>Copia email</button><a href="tel:+393478349694">+39 347 834 9694</a></div></section>
   </main>
-  <footer><a class="footer-name" href="#inizio">Stefano Caccamo <span aria-hidden="true">✳</span></a><span>MODICA, SICILIA / ITALIANO & INGLESE</span><span>© <span data-year>2026</span></span><button class="motion-toggle" type="button" aria-pressed="false">Pausa animazioni</button></footer>
-  <div class="toast" role="status" aria-live="polite" hidden></div>
+  <footer class="foot">
+    <span><i class="location" aria-hidden="true"></i>Modica, Sicilia</span>
+    <nav aria-label="Contatti"><a href="mailto:stefanocaccamo1@outlook.com">Email <i class="arrow diagonal" aria-hidden="true"></i></a>
+      <a href="https://wa.me/393478349694">WhatsApp <i class="arrow diagonal" aria-hidden="true"></i></a></nav>
+  </footer>
 </body>
 </html>

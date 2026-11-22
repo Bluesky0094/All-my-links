@@ -8,3 +8,41 @@
 
 @media(max-width:760px){.skill-index>a,.text-link,.contact-link,.project-links>a .project-open,.motion-toggle,.print-button{font-size:.875rem}.discipline#turismo h3{font-size:10vw}.project-meta>span{max-width:130px}.hero-bottom>span{font-size:.75rem}}
 @media screen{.hero-description,.profile-copy>p:not(.lead),.skills-heading>p,.discipline-detail>p,.discipline-detail li,.experience-row p,.method-grid p,.experience-heading p{font-size:1rem}}
+
+.web-concepts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  margin-top: clamp(40px, 5vw, 65px);
+}
+
+.web-concept img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.web-concept h3 {
+  margin-top: 16px;
+  font-size: 1.25rem;
+}
+
+.web-concept p {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.web-concept:hover h3,
+.web-concept:focus-visible h3 {
+  color: var(--section-accent);
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+@media (max-width: 760px) {
+  .web-concepts {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+}
