@@ -10,17 +10,17 @@ Profilo professionale di Stefano Caccamo: design, video, web, assistenza tecnolo
 
 - `index.html`: presentazione e quattro aree di servizio.
 - `static/home.css` e `static/home.js`: tipografia, layout e transizione fra le due schermate.
-- `static/paper-scene.js` e `static/paper-controls.js`: scultura in carta, illuminazione, rotazione e controlli. Three.js r180 e la licenza MIT sono in `static/vendor/`. La prima inquadratura è salvata in `static/assets/carta.webp` per l’anteprima e per i dispositivi senza WebGL.
+- `static/knot-scene.js` e `static/knot-controls.js`: nodo a strisce, geometria, rotazione e controlli. Three.js r180 e la licenza MIT sono in `static/vendor/`. La prima inquadratura è salvata in `static/assets/intreccio.webp` per l’anteprima e per i dispositivi senza WebGL.
 - `profilo.html`: profilo completo con esperienze, contatti e versione stampabile.
-- `static/styles.css`: layout responsive, colori per sezione, animazioni e versione stampabile.
-- `static/script.js`: navigazione mobile, avanzamento di lettura, cambio accento, animazioni e copia email.
+- `static/styles.css`: impaginazione e versione stampabile del profilo.
+- `static/script.js`: stampa del profilo e copia email.
 - `static/assets/`: immagini del portfolio e identità del sito.
 
 HTML, CSS e JavaScript senza dipendenze di build. GitHub Pages pubblica i file dalla radice di `main`. Per l’anteprima locale, avvia un server statico nella cartella del progetto.
 
 ## Accessibilità e movimento
 
-Navigazione da tastiera, link per saltare al contenuto, menu mobile con Escape, rispetto di `prefers-reduced-motion` e controllo “Pausa animazioni”. La preferenza viene salvata solo nel browser del visitatore. Il pulsante “Stampa il profilo” utilizza una versione essenziale adatta anche al salvataggio in PDF.
+Navigazione da tastiera, link per saltare al contenuto, rispetto di `prefers-reduced-motion` e controllo “Pausa rotazione”. La preferenza viene salvata solo nel browser del visitatore. Il pulsante “Stampa il profilo” utilizza una versione essenziale adatta anche al salvataggio in PDF.
 
 ## Pubblicazione con Sites
 

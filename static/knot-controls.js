@@ -1,9 +1,9 @@
-const stage = document.querySelector('.paper-stage');
+const stage = document.querySelector('.knot-stage');
 const intro = document.querySelector('#inizio');
 const canvas = stage.querySelector('canvas');
 const poster = stage.querySelector('img');
-const button = stage.querySelector('.paper-motion');
-const hint = stage.querySelector('.paper-hint');
+const button = stage.querySelector('.knot-motion');
+const hint = stage.querySelector('.knot-hint');
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 const motionKey = 'sc-motion-paused';
 const fullTurn = 2 * Math.PI;
@@ -63,9 +63,9 @@ async function sync() {
     if (loading) return;
     loading = true;
     try {
-      const {createPaperScene} = await import('./paper-scene.js');
+      const {createKnotScene} = await import('./knot-scene.js');
       if (!visible()) return;
-      scene = createPaperScene(canvas);
+      scene = createKnotScene(canvas);
       scene.resize(stage.clientWidth, devicePixelRatio);
       draw();
       canvas.tabIndex = 0;
