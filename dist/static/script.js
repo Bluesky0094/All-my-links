@@ -1,7 +1,3 @@
-const printButton = document.querySelector('.print-button');
-printButton.hidden = false;
-printButton.addEventListener('click', () => window.print());
-
 const copyEmail = document.querySelector('[data-copy-email]');
 const email = document.querySelector('.contact-list a[href^="mailto:"]');
 const status = document.querySelector('[data-copy-status]');
