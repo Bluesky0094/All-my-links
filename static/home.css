@@ -53,7 +53,7 @@ h1 strong, h2 strong { font-weight: 700; }
 .knot-stage img { object-fit: contain; padding: 4%; }
 .knot-stage canvas { touch-action: pan-y pinch-zoom; cursor: grab; }
 .knot-stage canvas:active { cursor: grabbing; }
-.knot-hint { position: absolute; bottom: -32px; left: 0; padding: 13px 0; color: var(--muted); font-size: .72rem; pointer-events: none; }
+.knot-hint { position: absolute; bottom: -32px; left: 0; max-width: calc(100% - 44px); padding: 6px 0; min-height: 44px; align-content: center; color: var(--muted); font-size: .72rem; pointer-events: none; }
 .knot-motion { position: absolute; right: 0; bottom: -32px; display: grid; place-items: center; width: 44px; height: 44px; border: none; border-radius: 50%; background: transparent; color: var(--ink); cursor: pointer; }
 .knot-motion:hover, .knot-motion:focus-visible { background: #e9e9e5; }
 .knot-motion::before { content: ""; box-sizing: border-box; width: 9px; height: 12px; border-inline: 3px solid; }
