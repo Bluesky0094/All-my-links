@@ -6,7 +6,9 @@ const button = stage.querySelector('.knot-motion');
 const hint = stage.querySelector('.knot-hint');
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 const motionKey = 'sc-motion-paused';
-const fullTurn = 2 * Math.PI;
+const cycleMs = 12000;
+const releaseHoldMs = 2000;
+const wrap = value => value - Math.floor(value);
 let paused = reduced.matches;
 try { paused ||= localStorage.getItem(motionKey) === 'true'; } catch {}
 
@@ -15,7 +17,7 @@ let loading = false;
 let failed = false;
 let inView = false;
 let pageActive = true;
-let angle = 0;
+let phase = 0;
 let pointer = null;
 let lastX = 0;
 let resumeAt = 0;
@@ -29,29 +31,29 @@ function visible() {
 
 function updateControl() {
   button.toggleAttribute('data-paused', paused);
-  button.title = paused ? 'Avvia rotazione' : 'Pausa rotazione';
+  button.title = paused ? 'Avvia movimento' : 'Pausa movimento';
   button.setAttribute('aria-label', button.title);
 }
 
 function draw() {
-  scene.render(angle);
-  const degrees = Math.floor(((angle / fullTurn % 1 + 1) % 1) * 360);
-  canvas.setAttribute('aria-valuenow', degrees);
-  canvas.setAttribute('aria-valuetext', degrees + ' gradi');
+  scene.render(phase);
+  const percent = Math.round(phase * 100);
+  canvas.setAttribute('aria-valuenow', percent);
+  canvas.setAttribute('aria-valuetext', percent + '% del ciclo');
   dirty = false;
 }
 
 function tick(now) {
   frame = 0;
   if (!visible() || !scene || failed) return;
-  const turning = !paused && pointer === null;
-  if (turning && lastTime !== null && now >= resumeAt) {
-    angle += (now - Math.max(lastTime, resumeAt)) * fullTurn / 30000;
+  const flowing = !paused && pointer === null;
+  if (flowing && lastTime !== null && now >= resumeAt) {
+    phase = wrap(phase + (now - Math.max(lastTime, resumeAt)) / cycleMs);
     dirty = true;
   }
   lastTime = now;
   if (dirty) draw();
-  if (turning) frame = requestAnimationFrame(tick);
+  if (flowing) frame = requestAnimationFrame(tick);
 }
 
 async function sync() {
@@ -91,10 +93,10 @@ function showPoster() {
   poster.hidden = false;
 }
 
-function rotate(radians) {
-  angle += radians;
+function pull(distance) {
+  phase = wrap(phase + distance);
   dirty = true;
-  resumeAt = performance.now() + 2000;
+  resumeAt = performance.now() + releaseHoldMs;
   sync();
 }
 
@@ -128,23 +130,25 @@ canvas.addEventListener('pointermove', event => {
   if (event.pointerId !== pointer) return;
   const dx = event.clientX - lastX;
   lastX = event.clientX;
-  rotate(dx / stage.clientWidth * fullTurn);
+  const width = canvas.getBoundingClientRect().width;
+  pull(dx / width);
 });
 function release(event) {
   if (event.pointerId !== pointer) return;
   pointer = null;
-  resumeAt = performance.now() + 2000;
+  resumeAt = performance.now() + releaseHoldMs;
   sync();
 }
 canvas.addEventListener('pointerup', release);
 canvas.addEventListener('pointercancel', release);
 canvas.addEventListener('lostpointercapture', release);
 canvas.addEventListener('keydown', event => {
-  const step = Math.PI / 18;
-  if (event.key === 'ArrowLeft') rotate(-step);
-  else if (event.key === 'ArrowRight') rotate(step);
-  else if (event.key === 'Home') rotate(-angle);
-  else if (event.key === 'End') rotate(fullTurn * 359 / 360 - angle);
+  const step = .025;
+  if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+    const direction = event.key === 'ArrowRight' ? 1 : -1;
+    pull(step * direction);
+  } else if (event.key === 'Home') pull(-phase);
+  else if (event.key === 'End') pull(.999 - phase);
   else return;
   event.preventDefault();
 });
