@@ -7,9 +7,10 @@
   <meta name="description" content="Conosci Stefano Caccamo, da Modica, tra viaggi con WhereIn, grafica e strumenti digitali.">
   <title>Chi sono — Stefano Caccamo</title>
   <link rel="icon" type="image/svg+xml" href="static/assets/favicon.svg">
-  <link rel="stylesheet" href="static/home.css">
-  <link rel="stylesheet" href="static/styles.css">
-  <script src="static/script.js" defer></script>
+  <script src="static/theme.js?v=2"></script>
+  <link rel="stylesheet" href="static/home.css?v=2">
+  <link rel="stylesheet" href="static/styles.css?v=2">
+  <script src="static/script.js?v=2" defer></script>
 </head>
 <body class="profile-page" id="inizio">
   <a class="skip" href="#contenuto">Vai al contenuto</a>
@@ -17,7 +18,10 @@
 <a aria-label="Stefano Caccamo, inizio" class="identity" href="index.html#inizio">
 <span aria-hidden="true" class="monogram">sc.</span><span>Stefano Caccamo</span>
 </a>
-<a class="quiet-link" href="#profilo">Chi sono <i aria-hidden="true" class="arrow diagonal"></i></a>
+<div class="mast-actions">
+      <a class="quiet-link" href="#profilo">Chi sono <i aria-hidden="true" class="arrow diagonal"></i></a>
+      <button class="theme-toggle" type="button" aria-pressed="false" hidden><span class="theme-track" aria-hidden="true"></span>Tema scuro</button>
+    </div>
 </header>
   <main id="contenuto" class="profile-main" tabindex="-1">
     <header class="profile-hero">
@@ -32,16 +36,15 @@
     <section class="chapter split" id="profilo" aria-labelledby="story-title">
       <h2 id="story-title">Chi sono</h2>
       <div class="story">
-          <p><strong>Ciao, sono Stefano, vivo a Modica, in Sicilia.</strong></p>
+          <p>Ciao, sono Stefano, vivo a Modica, in Sicilia.</p>
           <p>Se dovessi spiegarti in due parole cosa faccio nella vita, probabilmente finirei per usarne molte di più.</p>
-          <p>Mi sono sempre appassionato a un sacco di cose, spesso anche molto diverse tra loro. Informatica, grafica, video, siti web, tecnologia in generale... Diciamo che se qualcosa mi incuriosisce, difficilmente riesco a lasciarla stare senza aver capito come funziona.</p>
-          <p>Ho sempre avuto il vizio di voler fare le cose da solo. Non necessariamente perché sia la scelta più semplice, anzi, spesso è proprio il contrario. Ma mi piace imparare, sperimentare e trovare soluzioni, soprattutto quando c'è un problema da risolvere o un'idea da trasformare in qualcosa di concreto.</p>
-          <p>Nella vita di tutti i giorni lavoro con WhereIn Cooking Holidays, un tour operator che organizza vacanze gastronomiche e culturali in giro per l'Italia. Mi occupo un po' di organizzazione, persone, logistica e sviluppo di nuovi tour. È un lavoro che mi porta spesso in giro, a scoprire posti nuovi, conoscere persone e affrontare situazioni che difficilmente rendono noiose le giornate.</p>
-          <p>Quando non sono impegnato con WhereIn, è molto probabile che mi trovi davanti a un computer. Magari sto montando un video, lavorando a una grafica, sviluppando un'applicazione o cercando di far funzionare qualcosa che, per qualche misterioso motivo, ha deciso di smettere di collaborare.</p>
-          <p><strong>La verità è che non sono mai riuscito a scegliere una sola cosa da fare. E, tutto sommato, non sono nemmeno sicuro di volerlo fare.</strong></p>
-          <p>Questo sito nasce proprio da qui. Un posto dove mettere insieme quello che faccio, le cose che so fare e i progetti che mi vengono in mente.</p>
+          <p>Ho sempre avuto la curiosità di capire come funzionano le cose. Ma spesso non mi basta capirle, voglio anche provare a farle. Che si tratti di tecnologia, grafica, video o qualche idea venuta fuori dal nulla, trovo sempre qualcosa da fare. Non tutto va come immaginavo, ovviamente, ma è anche questo il bello.</p>
+          <p>Nella vita di tutti i giorni lavoro con Wherein Cooking Holidays, un tour operator che organizza vacanze gastronomiche e culturali in Italia. Tra organizzazione, nuovi tour e posti da scoprire, è un lavoro che mi porta spesso in giro e che difficilmente lascia spazio alla monotonia.</p>
+          <p>Una cosa che mi piace è che non tutto deve necessariamente partire da un grande progetto. A volte basta una curiosità, una conversazione o un problema da risolvere per ritrovarmi a fare qualcosa che fino a poco prima non avevo nemmeno preso in considerazione. Alcune idee rimangono esperimenti, altre prendono forma e diventano qualcosa di concreto.</p>
+          <p>E così, nel tempo, mi sono ritrovato a fare cose anche molto diverse tra loro, passando da un interesse all'altro e scoprendo ogni volta qualcosa di nuovo.</p>
+          <p>La verità è che non sono mai riuscito a scegliere una sola cosa da fare. E, tutto sommato, non sono nemmeno sicuro di volerlo fare.</p>
+          <p>Questo sito nasce un po' per questo: raccogliere i progetti, gli interessi e le cose che, nel tempo, mi sono ritrovato a fare.</p>
           <p>Un po' un portfolio, un po' un esperimento e un po' un modo per dare un senso a tutte le ore passate davanti al computer.</p>
-          <p>Benvenuto nel mio piccolo angolo di Internet!</p>
       </div>
     </section>
     <section class="chapter" id="progetti" aria-labelledby="projects-title">
@@ -51,7 +54,20 @@
       </header>
       <div class="projects">
           <article class="project-card">
-            <div class="project-media"><span class="placeholder">Foto di viaggio da aggiungere</span></div>
+            <div class="trip-gallery" data-gallery="Foto" role="group" aria-label="Foto del viaggio con Wherein">
+              <div class="project-media">
+                <img src="static/assets/wherein-cala.webp" width="1200" height="900" loading="lazy" alt="Una caletta tra pareti rocciose, con un ponte ad archi e le case sopra la spiaggia.">
+                <img hidden src="static/assets/wherein-faraglioni.webp" width="750" height="1000" loading="lazy" alt="Due faraglioni al largo della scogliera, con la schiuma delle onde ai piedi delle rocce.">
+                <img hidden src="static/assets/wherein-costa.webp" width="750" height="1000" loading="lazy" alt="La costa vista dall’alto, tra un pendio verde e una parete di roccia a picco sul mare.">
+                <img hidden src="static/assets/wherein-trulli.webp" width="750" height="1000" loading="lazy" alt="Tetti conici in pietra sopra le facciate bianche dei trulli.">
+                <img hidden src="static/assets/wherein-cantina.webp" width="1200" height="900" loading="lazy" alt="Un corridoio in cantina tra due file di grandi vasche.">
+              </div>
+              <div class="trip-controls" hidden>
+                <button type="button" aria-label="Foto precedente"><i class="arrow" aria-hidden="true"></i></button>
+                <span aria-live="polite" aria-atomic="true">Foto 1 di 5</span>
+                <button type="button" aria-label="Foto successiva"><i class="arrow" aria-hidden="true"></i></button>
+              </div>
+            </div>
             <div class="project-copy">
               <p class="category">Turismo e nuove esperienze</p>
               <h3>WhereIn — Alla scoperta di nuovi posti</h3>
@@ -59,7 +75,30 @@
             </div>
           </article>
           <article class="project-card">
-            <div class="project-media"><span class="placeholder">Schermata delle webapp da aggiungere</span></div>
+            <div class="app-gallery" data-gallery="Schermata" role="group" aria-label="Schermate delle webapp">
+              <div class="project-media">
+                <a data-caption="Wherein" href="static/assets/wherein-ordine.webp" aria-label="Ingrandisci l’ordine fornitore di Wherein">
+                  <picture>
+                    <source media="(max-width: 700px)" srcset="static/assets/wherein-ordine-mobile.webp">
+                    <img src="static/assets/wherein-ordine.webp" width="3288" height="1768" loading="lazy" alt="Ordine pronto per Orto delle Colline con le quantità di limoni, melanzane e pomodori.">
+                  </picture>
+                </a>
+                <a hidden data-caption="Società Operaia" href="static/assets/societa-cassa.webp" aria-label="Ingrandisci la schermata completa della cassa di Società Operaia">
+                  <picture>
+                    <source media="(max-width: 700px)" srcset="static/assets/societa-conto-mobile.webp">
+                    <img src="static/assets/societa-conto.webp" width="2720" height="1400" loading="lazy" alt="Conto con due espressi e un cornetto, per un totale di 4,20 euro.">
+                  </picture>
+                </a>
+              </div>
+              <div class="app-gallery-bar">
+                <a class="enlarge-shot" href="static/assets/wherein-ordine.webp">Ingrandisci</a>
+                <div class="trip-controls" hidden>
+                  <button type="button" aria-label="Schermata precedente"><i class="arrow" aria-hidden="true"></i></button>
+                  <span aria-live="polite" aria-atomic="true">Wherein · 1 di 2</span>
+                  <button type="button" aria-label="Schermata successiva"><i class="arrow" aria-hidden="true"></i></button>
+                </div>
+              </div>
+            </div>
             <div class="project-copy">
               <p class="category">Sviluppo web e strumenti digitali</p>
               <h3>Webapps — Quando la tecnologia semplifica le cose</h3>
@@ -107,6 +146,13 @@
       </div>
     </section>
   </main>
+  <dialog class="shot-viewer" aria-labelledby="shot-title">
+    <header>
+      <strong id="shot-title"></strong>
+      <form method="dialog"><button type="submit" autofocus>Chiudi</button></form>
+    </header>
+    <img alt="">
+  </dialog>
   <footer class="foot"><span><i class="location" aria-hidden="true"></i>Modica, Sicilia</span><a href="index.html#inizio">Torna alla presentazione <i class="arrow" aria-hidden="true"></i></a></footer>
 </body>
 </html>

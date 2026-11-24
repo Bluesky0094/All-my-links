@@ -96,8 +96,7 @@ function stripedMaterial(cycle) {
 }
 
 export function createKnotScene(canvas) {
-  const renderer = new WebGLRenderer({canvas, antialias: true, powerPreference: 'low-power'});
-  renderer.setClearColor(0xf8f8f6);
+  const renderer = new WebGLRenderer({canvas, alpha: true, antialias: true, powerPreference: 'low-power'});
   const scene = new Scene();
   const geometry = knotGeometry();
   const cycle = {value: 0};

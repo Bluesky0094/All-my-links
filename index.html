@@ -11,7 +11,8 @@
   <title>Stefano Caccamo — Cosa posso fare per te?</title>
   <link rel="icon" href="static/assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="static/assets/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="static/home.css">
+  <script src="static/theme.js?v=2"></script>
+  <link rel="stylesheet" href="static/home.css?v=2">
   <script src="static/home.js" defer></script>
   <script type="module" src="static/knot-controls.js"></script>
 </head>
@@ -21,7 +22,10 @@
     <a class="identity" href="#inizio" aria-label="Stefano Caccamo, inizio">
       <span class="monogram" aria-hidden="true">sc.</span><span>Stefano Caccamo</span>
     </a>
-    <a class="quiet-link" href="profilo.html">Chi sono <i class="arrow diagonal" aria-hidden="true"></i></a>
+    <div class="mast-actions">
+      <a class="quiet-link" href="profilo.html">Chi sono <i class="arrow diagonal" aria-hidden="true"></i></a>
+      <button class="theme-toggle" type="button" aria-pressed="false" hidden><span class="theme-track" aria-hidden="true"></span>Tema scuro</button>
+    </div>
   </header>
   <main id="contenuto" tabindex="-1">
     <section class="panel intro" id="inizio" aria-labelledby="hello">
