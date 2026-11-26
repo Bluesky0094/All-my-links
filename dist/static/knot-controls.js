@@ -6,6 +6,7 @@ const button = stage.querySelector('.knot-motion');
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 const motionKey = 'sc-motion-paused';
 const cycleMs = 12000;
+const spinPeriodMs = 60000;
 const releaseHoldMs = 2000;
 const wrap = value => value - Math.floor(value);
 let paused = reduced.matches;
@@ -17,6 +18,7 @@ let failed = false;
 let inView = false;
 let pageActive = true;
 let phase = 0;
+let spinPhase = 0;
 let pointer = null;
 let lastX = 0;
 let resumeAt = 0;
@@ -35,7 +37,7 @@ function updateControl() {
 }
 
 function draw() {
-  scene.render(phase);
+  scene.render(phase, spinPhase);
   const percent = Math.round(phase * 100);
   canvas.setAttribute('aria-valuenow', percent);
   canvas.setAttribute('aria-valuetext', percent + '% del ciclo');
@@ -47,7 +49,9 @@ function tick(now) {
   if (!visible() || !scene || failed) return;
   const flowing = !paused && pointer === null;
   if (flowing && lastTime !== null && now >= resumeAt) {
-    phase = wrap(phase + (now - Math.max(lastTime, resumeAt)) / cycleMs);
+    const elapsed = now - Math.max(lastTime, resumeAt);
+    phase = wrap(phase + elapsed / cycleMs);
+    spinPhase = wrap(spinPhase + elapsed / spinPeriodMs);
     dirty = true;
   }
   lastTime = now;
@@ -64,7 +68,7 @@ async function sync() {
     if (loading) return;
     loading = true;
     try {
-      const {createKnotScene} = await import('./knot-scene.js?v=2');
+      const {createKnotScene} = await import('./knot-scene.js?v=3');
       if (!visible()) return;
       scene = createKnotScene(canvas);
       scene.resize(stage.clientWidth, devicePixelRatio);
@@ -94,6 +98,7 @@ function showPoster() {
 
 function pull(distance) {
   phase = wrap(phase + distance);
+  spinPhase = wrap(spinPhase + distance);
   dirty = true;
   resumeAt = performance.now() + releaseHoldMs;
   sync();

@@ -115,9 +115,9 @@ export function createKnotScene(canvas) {
       renderer.setPixelRatio(Math.min(pixelRatio, 2));
       renderer.setSize(size, size, false);
     },
-    render(phase) {
+    render(phase, spinPhase) {
       cycle.value = phase;
-      knot.rotation.y = phase * tau;
+      knot.rotation.y = spinPhase * tau;
       renderer.render(scene, camera);
     }
   };
