@@ -8,7 +8,7 @@
   <title>Chi sono — Stefano Caccamo</title>
   <link rel="icon" type="image/svg+xml" href="static/assets/favicon.svg">
   <script src="static/theme.js?v=2"></script>
-  <link rel="stylesheet" href="static/home.css?v=2">
+  <link rel="stylesheet" href="static/home.css?v=3">
   <link rel="stylesheet" href="static/styles.css?v=2">
   <script src="static/script.js?v=2" defer></script>
 </head>
@@ -20,7 +20,19 @@
 </a>
 <div class="mast-actions">
       <a class="quiet-link" href="#profilo">Chi sono <i aria-hidden="true" class="arrow diagonal"></i></a>
-      <button class="theme-toggle" type="button" aria-pressed="false" hidden><span class="theme-track" aria-hidden="true"></span>Tema scuro</button>
+      <button class="theme-toggle" type="button" aria-label="Tema scuro" aria-pressed="false" hidden>
+        <span class="theme-track" aria-hidden="true">
+          <span class="theme-thumb">
+            <svg class="theme-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path>
+            </svg>
+            <svg class="theme-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round">
+              <path d="M21 13a9 9 0 1 1-10-10 7 7 0 0 0 10 10Z"></path>
+            </svg>
+          </span>
+        </span>
+      </button>
     </div>
 </header>
   <main id="contenuto" class="profile-main" tabindex="-1">

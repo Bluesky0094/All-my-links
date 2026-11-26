@@ -3,7 +3,6 @@ const intro = document.querySelector('#inizio');
 const canvas = stage.querySelector('canvas');
 const poster = stage.querySelector('img');
 const button = stage.querySelector('.knot-motion');
-const hint = stage.querySelector('.knot-hint');
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 const motionKey = 'sc-motion-paused';
 const cycleMs = 12000;
@@ -73,7 +72,7 @@ async function sync() {
       canvas.tabIndex = 0;
       canvas.hidden = false;
       poster.hidden = true;
-      button.hidden = hint.hidden = false;
+      button.hidden = false;
       updateControl();
     } catch {
       showPoster();
@@ -89,7 +88,7 @@ function showPoster() {
   failed = true;
   cancelAnimationFrame(frame);
   frame = 0;
-  canvas.hidden = button.hidden = hint.hidden = true;
+  canvas.hidden = button.hidden = true;
   poster.hidden = false;
 }
 

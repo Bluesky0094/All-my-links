@@ -54,24 +54,28 @@ h1, h2, p { margin: 0; }
 .mast-actions { display: flex; align-items: center; gap: clamp(.35rem, 1.4vw, 1.2rem); }
 .mast-actions .quiet-link { white-space: nowrap; }
 .theme-toggle {
-  display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
-  min-height: 48px; padding: .4rem .8rem; flex: none; white-space: nowrap;
-  border: 1px solid var(--outline); border-radius: 2rem; background: var(--surface);
-  color: var(--ink); font: 550 .88rem/1 Geist, Arial, sans-serif; cursor: pointer;
+  display: inline-grid; place-items: center; min-width: 56px; min-height: 44px;
+  padding: 0; flex: none; border: 0; background: transparent; color: var(--ink); cursor: pointer;
 }
 .theme-toggle[hidden] { display: none; }
-.theme-toggle:hover { border-color: var(--ink); }
 .theme-track {
-  display: flex; align-items: center; width: 2.5rem; height: 1.5rem; padding: 2px;
-  border: 1px solid var(--muted); border-radius: 1rem;
+  display: flex; align-items: center; width: 3.25rem; height: 1.75rem; padding: 2px;
+  border: 1px solid var(--outline); border-radius: 1rem; background: var(--surface);
 }
-.theme-track::before {
-  content: ""; width: 1rem; height: 1rem; border-radius: 50%; background: var(--muted);
+.theme-toggle:hover .theme-track { border-color: currentColor; }
+.theme-thumb {
+  display: grid; place-items: center; width: 1.375rem; height: 1.375rem;
+  border-radius: 50%; background: var(--ink); color: var(--paper);
 }
+.theme-thumb svg { width: .875rem; height: .875rem; }
+.theme-moon, .theme-toggle[aria-pressed="true"] .theme-sun { display: none; }
+.theme-toggle[aria-pressed="true"] .theme-moon { display: block; }
 .theme-toggle[aria-pressed="true"] .theme-track {
   justify-content: flex-end; background: var(--accent); border-color: var(--accent);
 }
-.theme-toggle[aria-pressed="true"] .theme-track::before { background: var(--on-accent); }
+.theme-toggle[aria-pressed="true"] .theme-thumb {
+  background: var(--on-accent); color: var(--accent);
+}
 .identity { gap: .9rem; font-size: .96rem; font-weight: 580; letter-spacing: -.03em; }
 .monogram { font-size: 2.45rem; font-weight: 850; letter-spacing: -.105em; line-height: 1; transform: skewX(-8deg); padding-right: .12em; }
 .quiet-link, .foot a { gap: .55rem; font-size: .9rem; min-height: 44px; }
@@ -97,7 +101,6 @@ h1 strong, h2 strong { font-weight: 700; }
 .knot-stage img { object-fit: contain; padding: 4%; }
 .knot-stage canvas { touch-action: pan-y pinch-zoom; cursor: grab; }
 .knot-stage canvas:active { cursor: grabbing; }
-.knot-hint { position: absolute; bottom: -32px; left: 0; max-width: calc(100% - 44px); padding: 6px 0; min-height: 44px; align-content: center; color: var(--muted); font-size: .72rem; pointer-events: none; }
 .knot-motion { position: absolute; right: 0; bottom: -32px; display: grid; place-items: center; width: 44px; height: 44px; border: none; border-radius: 50%; background: transparent; color: var(--ink); cursor: pointer; }
 .knot-motion:hover, .knot-motion:focus-visible { background: var(--surface); }
 .knot-motion::before { content: ""; box-sizing: border-box; width: 9px; height: 12px; border-inline: 3px solid; }
