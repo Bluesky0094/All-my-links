@@ -101,7 +101,7 @@ export function createKnotScene(canvas) {
   const geometry = knotGeometry();
   const cycle = {value: 0};
   const knot = new Mesh(geometry, stripedMaterial(cycle));
-  knot.rotation.set(Math.atan2(.51, .86), 0, .31);
+  knot.rotation.set(Math.atan2(.51, .86), 0, .31, "YXZ");
   scene.add(knot);
   const bounds = new Box3().setFromObject(knot, true);
   const center = bounds.getCenter(new Vector3());
@@ -117,6 +117,7 @@ export function createKnotScene(canvas) {
     },
     render(phase) {
       cycle.value = phase;
+      knot.rotation.y = phase * tau;
       renderer.render(scene, camera);
     }
   };

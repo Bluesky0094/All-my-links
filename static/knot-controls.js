@@ -64,7 +64,7 @@ async function sync() {
     if (loading) return;
     loading = true;
     try {
-      const {createKnotScene} = await import('./knot-scene.js');
+      const {createKnotScene} = await import('./knot-scene.js?v=2');
       if (!visible()) return;
       scene = createKnotScene(canvas);
       scene.resize(stage.clientWidth, devicePixelRatio);
